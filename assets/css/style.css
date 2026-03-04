@@ -417,24 +417,22 @@
     /* =========================================================
         Attention Hero（現行デザイン維持）
     ========================================================= */
+
 .aidmaSection--hero{ margin:0; }
 
 .attHero{ display:block; background:#F9DA49; position:relative; overflow:hidden; }
 .attPC{ display:none; }
 
-/* ✅ 文字ブロック（kicker+title）の制御変数 */
+/* ✅ サイズ制御だけ変数化 */
 :root{
-  /* 文字（kicker+title）をまとめて上下に動かす */
-  --att-text-ty: 0px;
+  /* title（イイじゃん）の縮尺：通常=1 */
+  --att-title-scale: 1;
 
-  /* kicker と title の間隔（“セット”として一定） */
-  --att-kicker-gap: 14px;
-
-  /* chars（man/woman）の持ち上げ量 */
-  --att-chars-ty: clamp(-48px, calc(300px - 40svh), 0px);
-
-  /* chars の高さ（低身長端末で縮める用） */
+  /* man/woman の高さ：通常は現状通り */
   --att-char-h: clamp(170px, 24svh, 230px);
+
+  /* chars の持ち上げ量：現状維持（必要なら既存の端末別上書きが効く） */
+  --att-chars-ty: clamp(-48px, calc(300px - 40svh), 0px);
 }
 
 .attHero__inner{
@@ -452,16 +450,27 @@
   padding: 44px 18px 18px;
 }
 
-/* ✅ kicker+title を1ブロックとして扱うラッパー相当（HTML変更なしで擬似） */
-.attHero__kicker,
 .attHero__title{
-  transform: translateY(var(--att-text-ty));
+  margin:0;
+  line-height:1.06;
+  letter-spacing:.01em;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+
+  gap: 10px;
+
+  /* ✅ 低身長端末だけ縮める（kickerと独立） */
+  transform: scale(var(--att-title-scale));
+  transform-origin: 50% 0%;
   will-change: transform;
 }
 
-/* ✅ title は「kickerとの間隔」を持たせる（kicker側marginは消す） */
 .attHero__kicker{
-  margin:0; /* ← ここがポイント：kicker単独の余白を消してブレを無くす */
+  /* ✅ ここは一切縮めない（サイズも余白も現状維持） */
+  margin:0 0 14px;
   font-weight:900;
   letter-spacing:.02em;
   color: rgba(0,0,0,.88);
@@ -473,19 +482,6 @@
   justify-content:center;
 }
 .attHero__kickerDeco{ font-weight:900; opacity:.9; }
-
-.attHero__title{
-  margin: var(--att-kicker-gap) 0 0;  /* ✅ kicker との間隔はここで一元管理 */
-  line-height:1.06;
-  letter-spacing:.01em;
-
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:flex-start;
-
-  gap: 10px;
-}
 
 .catchStack{
   position: relative;
@@ -543,7 +539,7 @@
 
 .attHero__man,
 .attHero__woman{
-  height: var(--att-char-h); /* ✅ 変数化（低身長端末で縮める） */
+  height: var(--att-char-h);   /* ✅ 低身長端末で縮む */
   width: auto;
   max-width: 100%;
   margin: 0 auto;
@@ -577,9 +573,6 @@
 .attHero__nextIcon{ display:block; width: 45px; height: 45px; }
 .attHero__nextLabel{ font-size: 26px; line-height: 1; }
 
-/* =========================================================
-   SP/Tablet
-========================================================= */
 @media (max-width:1023px){
   #Attention .attHero{
     width: 100vw;
@@ -595,20 +588,8 @@
     padding-bottom: clamp(12px, calc(26px - 1.5svh), 18px);
   }
 
-  /* ✅ 文字セットの“全体”だけを動かす（kicker/titleで差を出さない） */
-  :root{
-    --att-text-ty: clamp(50px, calc(220px - 28svh), 0px);
-    --att-kicker-gap: clamp(6px, calc(18px - 1.2svh), 14px);
-  }
-
-  /* catchStack の位置だけは現行踏襲（見た目維持） */
-  #Attention .catchStack{
-    transform: translateY(clamp(-10px, calc(150px - 20svh), 0px))
-               scale(clamp(.94, calc(1.02 - .01svh), 1));
-    transform-origin: 50% 0%;
-  }
-
-  #Attention .attHero__title{ gap: clamp(6px, calc(14px - 1.0svh), 10px); }
+  /* ✅ 余白は触らず、必要なら既存の微調整のみ */
+  #Attention .attHero__title{ gap: clamp(6px, calc(16px - 1.2svh), 10px); }
 
   #Attention .attHero__next{
     margin-top: clamp(6px, calc(22px - 1.7svh), 12px);
@@ -618,42 +599,31 @@
 }
 
 /* =========================================================
-   ✅ 低い画面（高さが小さい端末）で被り対策
-   - chars の持ち上げを弱める
-   - chars の高さも少し縮める
-   - 文字セットの上げ量も控えめに
+   ✅ 低身長スマホ：サイズで解決（間隔は触らない）
+   目安：SE系/古めAndroid等
 ========================================================= */
 @media (max-width:1023px) and (max-height:740px){
   :root{
-    --att-text-ty: clamp(24px, calc(160px - 22svh), 0px);     /* 文字を上げすぎない */
-    --att-chars-ty: clamp(-16px, calc(160px - 30svh), 0px);   /* chars を上げすぎない */
-    --att-char-h: clamp(150px, 22svh, 205px);                 /* キャラ自体も少し小さく */
-    --att-kicker-gap: clamp(6px, 1.2svh, 12px);               /* kicker-title間隔は維持しつつ微調整 */
+    --att-title-scale: 0.92;                 /* イイじゃん を少し縮める */
+    --att-char-h: clamp(150px, 21svh, 205px);/* man/woman を縮める */
+    --att-chars-ty: clamp(-18px, calc(180px - 32svh), 0px); /* chars を上げすぎない */
   }
 }
 
-/* =========================================================
-   ✅ iPhone 15 Pro 付近（幅390-430 / 高さ900以下）で被り対策
-   - chars の持ち上げを弱める（既存対策を維持）
-========================================================= */
+/* さらに低い（ガチで低い）端末だけもう一段 */
+@media (max-width:1023px) and (max-height:680px){
+  :root{
+    --att-title-scale: 0.88;
+    --att-char-h: clamp(140px, 20svh, 190px);
+    --att-chars-ty: clamp(-12px, calc(160px - 30svh), 0px);
+  }
+}
+
+/* iPhone15 Pro 付近：既存の被り対策は維持 */
 @media (min-width:390px) and (max-width:430px) and (max-height:900px){
   :root{
     --att-chars-ty: clamp(-18px, calc(220px - 32svh), 0px);
   }
-}
-
-/* =========================================================
-   PC
-========================================================= */
-@media (min-width:1024px){
-  #Attention .attHero{
-    width: 100%;
-    margin:0;
-    height: calc(100vh - var(--header-h) - var(--center-pad-top-pc));
-    left:auto;
-    transform:none;
-  }
-  #Attention .attHero__inner{ min-height: 100%; }
 }
 
 /* womanだけ scale で光学補正（transform統合） */
@@ -673,7 +643,7 @@
   }
 }
 
-/* NEXT icon pulse */
+/* NEXT icon pulse（既存維持） */
 #Attention .attHero__nextIcon.is-pulse{
   animation: nextIconPulse 1100ms ease-in-out infinite;
   transform-origin: 50% 50%;
@@ -695,6 +665,7 @@ html.att-intro #Attention .attHero__nextIcon.is-pulse{
     filter:none !important;
   }
 }
+
     /* =========================================================
         SP/Tablet Header + Drawer
     ========================================================= */
@@ -2329,4 +2300,5 @@ a.pcLeftBadge:visited{ color:inherit; }
   cursor:pointer;
 
 }
+
 
