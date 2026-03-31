@@ -733,7 +733,8 @@
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    height: calc(100svh - var(--header-h));
+    min-height: calc(100svh - var(--header-h));
+    height: auto;
   }
 
   #lp-omiya-kaigo #Attention .attHero__inner{ min-height: 100%; }
@@ -751,9 +752,9 @@
     margin-bottom: clamp(8px, calc(22px - 1.6svh), 14px);
   }
 
-  #lp-omiya-kaigo #Attention .attHero__chars{
-    transform: translateY(clamp(-48px, calc(300px - 40svh), 0px));
-  }
+#lp-omiya-kaigo #Attention .attHero__chars{
+  transform: translateY(clamp(-24px, -3svh, 0px));
+}
 
   #lp-omiya-kaigo #Attention .attHero__next{
     margin-top: clamp(6px, calc(22px - 1.7svh), 12px);
@@ -778,7 +779,7 @@
 
 @media (max-width:1023px) and (min-width:390px){
   #lp-omiya-kaigo #Attention .attHero__title{
-    transform: translateY(clamp(50px, calc(220px - 28svh), 0px));
+    transform: translateY(clamp(0px, 2svh, 20px));
     will-change: transform;
   }
 
@@ -791,7 +792,7 @@
   }
 
   #lp-omiya-kaigo #Attention .catchStack{
-    transform: translateY(clamp(-10px, calc(150px - 20svh), 0px)) scale(clamp(.94, calc(1.02 - .01svh), 1));
+    transform: translateY(clamp(-6px, -1svh, 0px)) scale(1);
     transform-origin: 50% 0%;
   }
 }
