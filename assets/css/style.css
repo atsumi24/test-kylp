@@ -2380,13 +2380,23 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
   top: var(--voice-meta-nudge);
 }
 
-#lp-omiya-kaigo #Voice .voiceStage{
-  position:relative;
-  height: 360px;
+#lp-omiya-kaigo #Voice .voiceStageWrap{
+  position: relative;
+  display: grid;
+  grid-template-columns: 46px 1fr 46px;
+  align-items: end;
+  column-gap: 0;
   margin-top: -30px;
+}
+
+#lp-omiya-kaigo #Voice .voiceStage{
+  position: relative;
+  height: 360px;
+  margin-top: 0;
+  min-width: 0;
   touch-action: pan-x;
   overscroll-behavior-x: contain;
-  user-select:none;
+  user-select: none;
 }
 
 #lp-omiya-kaigo #Voice .voicePerson{
@@ -2434,8 +2444,12 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
 }
 
 #lp-omiya-kaigo #Voice .voiceNav{
-  position:absolute;
-  bottom: 54px;
+  position: relative;
+  bottom: auto;
+  left: auto;
+  right: auto;
+  align-self: end;
+  margin-bottom: 54px;
   width: 46px;
   height: 46px;
   border-radius: 999px;
@@ -2443,11 +2457,16 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
   border: 2px solid rgba(0,0,0,.25);
   box-shadow: 0 8px 16px rgba(0,0,0,.10);
   z-index: 4;
-  cursor:pointer;
+  cursor: pointer;
 }
 
-#lp-omiya-kaigo #Voice .voiceNav--prev{ left: 48px; }
-#lp-omiya-kaigo #Voice .voiceNav--next{ right: 48px; }
+#lp-omiya-kaigo #Voice .voiceNav--prev{
+  justify-self: start;
+}
+
+#lp-omiya-kaigo #Voice .voiceNav--next{
+  justify-self: end;
+}
 
 #lp-omiya-kaigo #Voice .voiceNav::before{
   content:"";
@@ -2516,8 +2535,7 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
 @media (max-width: 340px){
   #lp-omiya-kaigo #Voice .voiceStage{ height: 340px; }
   #lp-omiya-kaigo #Voice{ --voice-person-w: 190px; }
-  #lp-omiya-kaigo #Voice .voiceNav--prev{ left: 36px; }
-  #lp-omiya-kaigo #Voice .voiceNav--next{ right: 36px; }
+  #lp-omiya-kaigo #Voice .voiceNav{ margin-bottom: 48px; }
   #lp-omiya-kaigo #Voice .voiceBubbleWrap{ height: 240px; }
 }
 
