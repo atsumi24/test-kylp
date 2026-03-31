@@ -1,0 +1,984 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AIDMA Onefile (PC Rails Fixed)</title>
+
+  <!-- LP側CSS -->
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <!-- フォーム側CSS -->
+  <link rel="stylesheet" href="assets/joinus.css">
+
+  <!-- JS -->
+  <script src="assets/js/script.js" defer></script>
+  <script src="assets/joinus.js" defer></script>
+</head>
+
+<body>
+  <div
+    id="lp-omiya-kaigo"
+    class="aidmaFrame"
+    data-aidma-frame="1"
+    data-lp-root="omiya-kaigo"
+    data-lp-scope="1"
+  >
+
+    <!--  SP/Tablet Fixed Header -->
+    <header class="mHeader" aria-label="Mobile header">
+      <div class="mHeader__brands" aria-label="Brand">
+        <img src="assets/logo.png" alt="ロゴ" />
+        <img class="mHeader__logo2" src="assets/kyoritu.svg" alt="大宮共立病院" />
+      </div>
+
+      <button
+        class="mBurger"
+        type="button"
+        aria-label="メニューを開く"
+        aria-controls="mDrawer"
+        aria-expanded="false"
+        data-mnav-open="1"
+      >
+        <span class="mBurger__lines" aria-hidden="true">
+          <i></i><i></i><i></i>
+        </span>
+      </button>
+    </header>
+
+    <!--  SP/Tablet Drawer -->
+    <div class="mDrawerOverlay" aria-hidden="true" data-mnav-close="1"></div>
+    <aside
+      class="mDrawer"
+      id="mDrawer"
+      role="dialog"
+      aria-modal="true"
+      aria-label="メニュー"
+      aria-hidden="true"
+    >
+      <div class="mDrawer__head">
+        <div class="mDrawer__title">MENU</div>
+        <button class="mClose" type="button" aria-label="メニューを閉じる" data-mnav-close="1">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+
+      <div class="mDrawer__body">
+        <nav class="mNav" aria-label="Page menu (mobile)">
+          <a href="#Top" data-mtoc="Top">
+            <div class="mNav__label">TOP <span class="mNav__chev" aria-hidden="true">›</span></div>
+            <div class="mNav__sub">最新の募集要項はこちら</div>
+          </a>
+
+          <a href="#BadImage" data-mtoc="BadImage">
+            <div class="mNav__label">BAD IMAGE <span class="mNav__chev" aria-hidden="true">›</span></div>
+            <div class="mNav__sub">介護職に悪いイメージを持っていませんか？</div>
+          </a>
+
+          <a href="#Changing" data-mtoc="Changing">
+            <div class="mNav__label">CHANGING <span class="mNav__chev" aria-hidden="true">›</span></div>
+            <div class="mNav__sub">大宮共立病院の介護職は進化する！</div>
+          </a>
+
+          <a href="#Memory" data-mtoc="Memory">
+            <div class="mNav__label">MEMORY <span class="mNav__chev" aria-hidden="true">›</span></div>
+            <div class="mNav__sub">先輩のわたしが「ここで働いて良かった」瞬間</div>
+          </a>
+
+          <a href="#Voice" data-mtoc="Voice">
+            <div class="mNav__label">VOICE <span class="mNav__chev" aria-hidden="true">›</span></div>
+            <div class="mNav__sub">先輩たちの声</div>
+          </a>
+
+          <a href="#Data" data-mtoc="Data">
+            <div class="mNav__label">DATA <span class="mNav__chev" aria-hidden="true">›</span></div>
+            <div class="mNav__sub">数字でわかる働きやすさ</div>
+          </a>
+
+          <a href="#Action" data-mtoc="Action">
+            <div class="mNav__label">ACTION <span class="mNav__chev" aria-hidden="true">›</span></div>
+            <div class="mNav__sub">体験・見学会/WEB説明会の申込へ</div>
+          </a>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- =========================================================
+      LP VIEW
+    ========================================================= -->
+    <div id="lpView" data-lp-view="1">
+
+      <!-- [RAIL] LEFT : Image-based CTA -->
+      <aside class="aidmaRail aidmaRail--L only-desktop" aria-label="Left rail">
+        <div class="aidmaRail__inner">
+          <div class="pcLeftPanel" data-pc-leftpanel="1">
+            <div class="pcLeftFit" data-pc-leftfit="1">
+
+              <div class="pcLeftTop">
+                <div class="pcLeftBrandRow" aria-label="Brand">
+                  <img src="assets/logo.png" alt="ロゴ" />
+                  <img src="assets/kyoritu.svg" alt="大宮共立病院" />
+                </div>
+
+                <div class="pcLeftBar">介護職採用ページ</div>
+
+                <a
+                  class="pcLeftBadge"
+                  href="#ActionForm"
+                  aria-label="体験・見学会/WEB説明会に参加する"
+                  data-open-form-link="1"
+                >
+                  <div class="pcBadgeStage">
+                    <img class="pcBadgeRing" src="assets/circle-text.svg" alt="" aria-hidden="true" />
+                    <div class="pcBadgeBurstSpin" aria-hidden="true">
+                      <div class="pcBadgeBurstScale">
+                        <img src="assets/batch.svg" alt="" aria-hidden="true" />
+                      </div>
+                    </div>
+                    <img class="pcBadgeText" src="assets/batch-text.svg" alt="" aria-hidden="true" />
+                  </div>
+                </a>
+
+                <div class="pcLeftBtns">
+                  <a
+                    class="pcLeftBtn"
+                    href="https://omiya-kyoritu.or.jp"
+                    target="_blank"
+                    rel="noopener"
+                    aria-label="Official site"
+                  >
+                    <img class="pcLeftBtnImg" src="assets/site.svg" alt="OFFICIAL SITE 公式ホームページはこちら" />
+                  </a>
+                  <a class="pcLeftBtn" href="tel:0486867152" aria-label="電話する">
+                    <img class="pcLeftBtnImg" src="assets/tel.svg" alt="048-686-7152 受付時間 平日9:00〜17:00" />
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- [CENTER] -->
+      <main class="aidmaCenter" id="Top" aria-label="Main content">
+        <div class="aidmaTopMarker" data-aidma="Top" aria-hidden="true"></div>
+
+        <section id="Attention" class="aidmaSection aidmaSection--hero" data-section="Attention" data-aidma="Top">
+          <div class="attHero" aria-label="Attention hero">
+            <div class="attHero__inner">
+              <div>
+                <p class="attHero__kicker">
+                  <span class="attHero__kickerDeco" aria-hidden="true">＼</span>
+                  キツそう？いや、意外と
+                  <span class="attHero__kickerDeco" aria-hidden="true">／</span>
+                </p>
+
+                <h1 class="attHero__title">
+                  <span class="catchStack" aria-label="イイじゃん大宮共立病院の介護職">
+                    <img class="catchShadow" src="assets/catchShadow.svg" alt="" aria-hidden="true">
+                    <img class="catchFace" src="assets/catchcopy.svg" alt="イイじゃん 大宮共立病院の 介護職">
+                  </span>
+                </h1>
+              </div>
+
+              <div class="attHero__chars" aria-hidden="true">
+                <img class="attHero__man" src="assets/man-attention.svg" alt="" />
+                <img class="attHero__woman" src="assets/woman-attention.svg" alt="" />
+              </div>
+
+              <a class="attHero__next" href="#BadImage" aria-label="Next">
+                <span class="attHero__nextIconWrap" aria-hidden="true">
+                  <img class="attHero__nextIcon" src="assets/next-icon.svg" alt="" aria-hidden="true" />
+                </span>
+                <span class="attHero__nextLabel">NEXT</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="attPC" aria-hidden="true">
+            <header class="secHead">
+              <div class="secKicker">AIDMA</div>
+              <h2 class="secTitle">Attention</h2>
+            </header>
+            <div class="secBody">
+              <div style="height:140px;background:rgba(0,0,0,.03);display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,.58);">
+                （ここにPCコンテンツ）
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="BadImage" class="aidmaSection" data-section="BadImage" data-aidma="BadImage">
+          <header class="secHead">
+            <div class="secKicker">SECTION</div>
+            <h2 class="secTitle">Bad Image</h2>
+          </header>
+
+          <div class="secBody">
+            <section class="badHero" aria-label="Bad Image hero">
+              <div class="badHero__inner">
+                <p class="badHero__lead">
+                  介護＝<span class="badHero__leadEm">きつい</span><br>
+                  そんなふうに感じていませんか？
+                </p>
+
+                <div class="badHero__stage" aria-hidden="true">
+                  <div class="badBubble badBubble--top"><img src="assets/hukidashi_1.svg" alt=""></div>
+                  <div class="badBubble badBubble--left"><img src="assets/hukidashi_2.svg" alt=""></div>
+                  <div class="badBubble badBubble--right"><img src="assets/hukidashi_3.svg" alt=""></div>
+                  <img class="badIllust" src="assets/Bad-Illust.svg" alt="">
+                </div>
+
+                <div class="badArrowFlow" aria-hidden="true"><i></i><i></i><i></i></div>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section id="Changing" class="aidmaSection" data-section="Changing" data-aidma="Changing">
+          <header class="secHead">
+            <div class="secKicker">SECTION</div>
+            <h2 class="secTitle">Changing</h2>
+          </header>
+
+          <div class="secBody">
+            <div class="chgFixed" aria-label="Changing 固定見出し">
+              <div class="chgFixed__kicker">実はその想像、</div>
+              <div class="chgFixed__headline" aria-label="大宮共立病院では全部違う！">
+                <span class="chgFixed__black">大宮共立病院で</span><span class="chgFixed__black chgFixed__ha">は</span>
+                <span class="chgFixed__invert">全部違う！</span>
+              </div>
+            </div>
+
+            <div class="chg" data-chg="1" aria-label="Changing カードスライダー">
+              <button class="chgArrow chgArrow--prev" type="button" aria-label="前のカードへ" data-chg-prev="1">‹</button>
+              <button class="chgArrow chgArrow--next" type="button" aria-label="次のカードへ" data-chg-next="1">›</button>
+
+              <div class="chgTrack" data-chg-track="1" tabindex="0" aria-label="カードを左右に切り替え">
+
+                <article class="chgSlide" data-chg-slide="0">
+                  <div class="chgCard">
+                    <div class="chgCard__top">
+                      <div class="chgCard__title">力仕事を“一人にしない”介護</div>
+                      <div class="chgCard__tags">#チーム介護　#一人じゃない　#無理しない働き方</div>
+                    </div>
+                    <div class="chgCard__photo">
+                      <img class="chgCard__photoImg" src="assets/swipe-photo1.png" alt="" loading="lazy" />
+                      <span class="chgCard__swipe" aria-hidden="true"><img src="assets/swipe-icon.svg" alt="" aria-hidden="true" /></span>
+                    </div>
+                    <div class="chgCard__body">
+                      病院の介護だから、業務は<br />
+                      「原則二人＋福祉用具」が<br />
+                      基本です。無理な力仕事を<br />
+                      一人に背負わせない<br />
+                      仕組みがあります。
+                    </div>
+                  </div>
+                </article>
+
+                <article class="chgSlide" data-chg-slide="1">
+                  <div class="chgCard">
+                    <div class="chgCard__top">
+                      <div class="chgCard__title">休みも大事にできる職場</div>
+                      <div class="chgCard__tags">#ちゃんと休める　#メリハリ勤務　#長く続けやすい</div>
+                    </div>
+                    <div class="chgCard__photo">
+                      <img class="chgCard__photoImg" src="assets/swipe-photo2.png" alt="" loading="lazy" />
+                      <span class="chgCard__swipe" aria-hidden="true"><img src="assets/swipe-icon.svg" alt="" aria-hidden="true" /></span>
+                    </div>
+                    <div class="chgCard__body">
+                      病院の介護だから、夜勤回数や<br />
+                      残業時間を見える化してムリを<br />
+                      させません。仮眠や休憩を取れるよう<br />
+                      リズムの整ったシフトづくりを<br />
+                      心がけています。
+                    </div>
+                  </div>
+                </article>
+
+                <article class="chgSlide" data-chg-slide="2">
+                  <div class="chgCard">
+                    <div class="chgCard__top">
+                      <div class="chgCard__title">“汚れる場面”も守られた環境</div>
+                      <div class="chgCard__tags">#清潔ケア　#におい対策　#安心設備</div>
+                    </div>
+                    <div class="chgCard__photo">
+                      <img class="chgCard__photoImg" src="assets/swipe-photo3.png" alt="" loading="lazy" />
+                      <span class="chgCard__swipe" aria-hidden="true"><img src="assets/swipe-icon.svg" alt="" aria-hidden="true" /></span>
+                    </div>
+                    <div class="chgCard__body">
+                      病院の介護だから、防護具と<br />
+                      決められた手順、設備でしっかり<br />
+                      守られています。防汚対策・感染対策<br />
+                      をしたうえで、安心して<br />
+                      ケアに向き合えます。
+                    </div>
+                  </div>
+                </article>
+
+                <article class="chgSlide" data-chg-slide="3">
+                  <div class="chgCard">
+                    <div class="chgCard__top">
+                      <div class="chgCard__title">危険を一人で背負わない介護</div>
+                      <div class="chgCard__tags">#安全第一　#二重チェック対策　#リスク共有</div>
+                    </div>
+                    <div class="chgCard__photo">
+                      <img class="chgCard__photoImg" src="assets/swipe-photo4.png" alt="" loading="lazy" />
+                      <span class="chgCard__swipe" aria-hidden="true"><img src="assets/swipe-icon.svg" alt="" aria-hidden="true" /></span>
+                    </div>
+                    <div class="chgCard__body">
+                      朝のミーティングで転倒や<br />
+                      事故のリスクを全員で共有します。<br />
+                      二重チェックで「気づく目」を増やし、<br />
+                      ヒヤヒヤしない現場をめざしています。
+                    </div>
+                  </div>
+                </article>
+
+                <article class="chgSlide" data-chg-slide="4">
+                  <div class="chgCard">
+                    <div class="chgCard__top">
+                      <div class="chgCard__title">“一人にしない”育成ステップ</div>
+                      <div class="chgCard__tags">#未経験歓迎　#ステップアップ　#クリニカルラダー</div>
+                    </div>
+                    <div class="chgCard__photo">
+                      <img class="chgCard__photoImg" src="assets/swipe-photo5.png" alt="" loading="lazy" />
+                      <span class="chgCard__swipe" aria-hidden="true"><img src="assets/swipe-icon.svg" alt="" aria-hidden="true" /></span>
+                    </div>
+                    <div class="chgCard__body">
+                      病院の介護だから、クリニカルラダーと<br />
+                      プリセプター制度で初めての<br />
+                      介護職でも、安心して毎日の業務に<br />
+                      取り組めます。
+                    </div>
+                  </div>
+                </article>
+
+                <article class="chgSlide" data-chg-slide="5">
+                  <div class="chgCard">
+                    <div class="chgCard__top">
+                      <div class="chgCard__title">“今だけ”で終わらないキャリア</div>
+                      <div class="chgCard__tags">#キャリア広がる　#資格サポート　#この先も安心</div>
+                    </div>
+                    <div class="chgCard__photo">
+                      <img class="chgCard__photoImg" src="assets/swipe-photo6.png" alt="" loading="lazy" />
+                      <span class="chgCard__swipe" aria-hidden="true"><img src="assets/swipe-icon.svg" alt="" aria-hidden="true" /></span>
+                    </div>
+                    <div class="chgCard__body">
+                      病院の介護だから、リーダー・<br />
+                      教育担当・相談員など<br />
+                      様々な役割があります。<br />
+                      資格取得も含めて、「この先」を<br />
+                      一緒に考えていける環境です。
+                    </div>
+                  </div>
+                </article>
+
+              </div>
+
+              <div class="chgDots" data-chg-dots="1" aria-label="スライド位置"></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="SubAction" class="aidmaSection aidmaSection--subaction" data-section="SubAction" data-aidma="SubAction">
+          <div class="secBody">
+            <a
+              class="subBatch"
+              href="#Action"
+              aria-label="体験・見学会 / WEB説明会に参加する"
+            >
+              <span class="subRibbon" aria-hidden="true"><span class="subRibbon__text">仕事体験・見学会・WEB説明会</span></span>
+
+              <span class="subBatch__stage" aria-hidden="true">
+                <img class="subBatch__ring" src="assets/circle-text.svg" alt="" aria-hidden="true" />
+                <span class="subBatch__burstSpin" aria-hidden="true">
+                  <span class="subBatch__burstScale"><img src="assets/batch.svg" alt="" aria-hidden="true" /></span>
+                </span>
+                <img class="subBatch__text" src="assets/subbatch-text.svg" alt="" aria-hidden="true" />
+                <img class="subBatch__illust" src="assets/subbatch-Illust.svg" alt="" aria-hidden="true" />
+              </span>
+            </a>
+          </div>
+        </section>
+
+        <section id="Memory" class="aidmaSection" data-section="Memory" data-aidma="Memory">
+          <header class="secHead"><div class="secKicker">AIDMA</div><h2 class="secTitle">Memory</h2></header>
+
+          <div class="secBody">
+            <section class="memHero" aria-label="Memory">
+              <div class="memHero__inner">
+
+                <header class="memHead">
+                  <img class="memHead__title" src="assets/memory-title.svg" alt="MEMORY" />
+                  <p class="memHead__lead">1年先輩の私が「ここで働いて良かった」と思った3つの瞬間</p>
+                </header>
+
+                <article class="memCard">
+                  <div class="memCard__media">
+                    <div class="memFrame">
+                      <img class="memPhoto" src="assets/memory-photo1.png" alt="" loading="lazy" />
+                    </div>
+                    <img class="memMoment" src="assets/memory-moment1.svg" alt="BEST MOMENT 01" />
+                  </div>
+                  <div class="memText">
+                    <h3 class="memText__title">初めて、利用者さんが<br>「私の名前」で呼んでくれた瞬間</h3>
+                    <p class="memText__body">
+                      まだ慣れなくて不安だった私を、ずっと気にかけてくれていた、その瞬間に、
+                      「こういう働き方がしたくてやってきたんだ」と思えた。
+                    </p>
+                  </div>
+                </article>
+
+                <article class="memCard">
+                  <div class="memCard__media">
+                    <div class="memFrame">
+                      <img class="memPhoto" src="assets/memory-photo2.png" alt="" loading="lazy" />
+                    </div>
+                    <img class="memMoment" src="assets/memory-moment2.svg" alt="BEST MOMENT 02" />
+                  </div>
+                  <div class="memText">
+                    <h3 class="memText__title">忙しいときでも<br>一人にしないでくれた瞬間</h3>
+                    <p class="memText__body">
+                      いろいろな人たちへ、一人で頑張らなくていい、という先輩がすっと近くにいてくれた。
+                      その中で思えた、「ここなら安心して仕事をしていける」って思えた。
+                    </p>
+                  </div>
+                </article>
+
+                <article class="memCard">
+                  <div class="memCard__media">
+                    <div class="memFrame">
+                      <img class="memPhoto" src="assets/memory-photo3.png" alt="" loading="lazy" />
+                    </div>
+                    <img class="memMoment" src="assets/memory-moment3.svg" alt="BEST MOMENT 03" />
+                  </div>
+                  <div class="memText">
+                    <h3 class="memText__title">ちゃんと休みも、<br>大事にしてくれた瞬間</h3>
+                    <p class="memText__body">
+                      休憩中の声かけに、「何時に休んでいいよ」など、声をかけてくれた。
+                      休憩もマイペースに大切にできる環境だと知って、ここで働いてよかったと心から思った。
+                    </p>
+                  </div>
+                </article>
+
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section id="Voice" class="aidmaSection" data-section="Voice" data-aidma="Voice">
+          <div class="secBody">
+            <div class="voiceWrap" data-voice-carousel="1">
+
+              <div class="voiceTitle voiceTitle--svg" aria-label="VOICE">
+                <img class="voiceTitleSvg" src="assets/voice-title.svg" alt="VOICE">
+                <div class="voiceTitle__jp voiceTitle__jp--under">先輩たちの声</div>
+              </div>
+
+              <div class="voiceBubbleWrap">
+                <img
+                  class="voiceBubbleSvg"
+                  data-voice-bubble-svg
+                  src="assets/voice-text1.svg"
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                >
+                <div class="voiceBubble" role="group" aria-label="先輩の声">
+                  <p class="voiceBubble__text" data-voice-text></p>
+                  <div class="voiceBubble__meta" data-voice-meta></div>
+                </div>
+              </div>
+
+              <div class="voiceStage" data-voice-stage>
+                <img class="voicePerson voicePerson--left2" data-voice-img="left2" src="" alt="" aria-hidden="true" loading="lazy">
+                <img class="voicePerson voicePerson--left" data-voice-img="left" src="assets/senior6.png" alt="" loading="lazy">
+                <img class="voicePerson voicePerson--main" data-voice-img="main" src="assets/senior1.png" alt="" loading="lazy">
+                <img class="voicePerson voicePerson--right" data-voice-img="right" src="assets/senior2.png" alt="" loading="lazy">
+                <img class="voicePerson voicePerson--right2" data-voice-img="right2" src="" alt="" aria-hidden="true" loading="lazy">
+
+                <button class="voiceNav voiceNav--prev" type="button" aria-label="前の声" data-voice-prev></button>
+                <button class="voiceNav voiceNav--next" type="button" aria-label="次の声" data-voice-next></button>
+
+                <div class="voiceSwipe" aria-hidden="true">
+                  <img class="voiceSwipeSvg" src="assets/swipe-icon2.svg" alt="">
+                </div>
+
+                <div class="voiceDots" aria-hidden="true" data-voice-dots></div>
+              </div>
+
+              <div class="voiceRibbon">
+                <p class="voiceRibbon__text" data-voice-ribbon></p>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <section id="Data" class="aidmaSection" data-section="Data" data-aidma="Data">
+          <header class="secHead">
+            <div class="secKicker">SECTION</div>
+            <h2 class="secTitle">Data</h2>
+          </header>
+
+          <div class="secBody">
+            <div class="dataWrap">
+              <div class="dataHero" aria-hidden="false">
+                <img class="dataTitleImg" src="assets/data-title.svg" alt="DATA 数字でわかる働きやすさ">
+              </div>
+
+              <div class="dataCards" role="list">
+                <article class="dataCard" role="listitem" aria-label="年間休日数 114日">
+                  <div class="dataLabel">年間休日数</div>
+                  <div class="dataValueRow">
+                    <span class="dataDigits" data-count-to="114" data-digits="3" aria-label="114"></span>
+                    <span class="dataUnit">日</span>
+                  </div>
+                </article>
+
+                <article class="dataCard" role="listitem" aria-label="月平均残業時間 6時間以内">
+                  <div class="dataLabel">月平均残業時間</div>
+                  <div class="dataValueRow">
+                    <span class="dataDigits" data-count-to="6" data-digits="1" aria-label="6"></span>
+                    <span class="dataUnit">時間以内</span>
+                  </div>
+                </article>
+
+                <article class="dataCard" role="listitem" aria-label="有給休暇取得率 80%">
+                  <div class="dataLabel">有給休暇取得率</div>
+                  <div class="dataValueRow">
+                    <span class="dataDigits" data-count-to="80" data-digits="2" aria-label="80"></span>
+                    <span class="dataUnit">%</span>
+                  </div>
+                </article>
+
+                <article class="dataCard" role="listitem" aria-label="3年定着率 80%">
+                  <div class="dataLabel">3年定着率</div>
+                  <div class="dataValueRow">
+                    <span class="dataDigits" data-count-to="80" data-digits="2" aria-label="80"></span>
+                    <span class="dataUnit">%</span>
+                  </div>
+                </article>
+
+                <article class="dataCard" role="listitem" aria-label="教育担当配置率 100%">
+                  <div class="dataLabel">教育担当配置率</div>
+                  <div class="dataValueRow">
+                    <span class="dataDigits" data-count-to="100" data-digits="3" aria-label="100"></span>
+                    <span class="dataUnit">%</span>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="Action" class="aidmaSection aidmaSection--action" data-section="Action" data-aidma="Action">
+          <div class="secBody">
+            <div class="actionWrap" aria-label="Action">
+
+              <div class="actionPC" aria-hidden="true">
+                <img class="actionPC__title" src="assets/action-titlePC.svg" alt="THANKS FOR WATCHING" />
+                <img class="actionPC__illust" src="assets/action-IllustPC.svg" alt="" />
+              </div>
+
+              <div class="actionSP">
+                <a
+                  class="actionBatch subBatch"
+                  href="#ActionForm"
+                  aria-label="参加する"
+                  data-open-form-link="1"
+                >
+                  <span class="subBatch__stage" aria-hidden="true">
+                    <img class="subBatch__ring" src="assets/circle-text.svg" alt="" aria-hidden="true" />
+                    <span class="subBatch__burstSpin" aria-hidden="true">
+                      <span class="subBatch__burstScale">
+                        <img src="assets/batch.svg" alt="" aria-hidden="true" />
+                      </span>
+                    </span>
+                    <img class="actionBatch__text" src="assets/actionbatch-text.svg" alt="" aria-hidden="true" />
+                  </span>
+                </a>
+
+                <img class="actionSP__illust" src="assets/action-IllustSP.svg" alt="" />
+
+                <div class="actionBtns pcLeftBtns" role="group" aria-label="Action links">
+                  <a
+                    class="pcLeftBtn"
+                    href="https://omiya-kyoritu.or.jp"
+                    target="_blank"
+                    rel="noopener"
+                    aria-label="Official site"
+                  >
+                    <img class="pcLeftBtnImg" src="assets/site.svg" alt="OFFICIAL SITE 公式ホームページはこちら" />
+                  </a>
+                  <a class="pcLeftBtn" href="tel:0486867152" aria-label="電話する">
+                    <img class="pcLeftBtnImg" src="assets/tel.svg" alt="048-686-7152 受付時間 平日9:00〜17:00" />
+                  </a>
+                </div>
+
+                <div class="actionFooter" aria-label="Footer">
+                  <img class="actionThanks" src="assets/action-titleSP.svg" alt="THANKS" />
+                  <a class="actionTop" href="#Top" aria-label="Topへ戻る">
+                    <img src="assets/topscrollbutton.svg" alt="" aria-hidden="true" />
+                  </a>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- [RAIL] RIGHT -->
+      <aside class="aidmaRail aidmaRail--R only-desktop" aria-label="Right rail">
+        <div class="aidmaRail__inner">
+          <div class="railBlock">
+            <div class="pcTextMenu" data-pc-textmenu="1">
+              <div class="pcTextMenu__fit" data-pc-fit="1">
+                <div class="pcTextMenu__tilt">
+
+                  <a class="pcMenuPill" href="#Top" aria-label="Menu / Top">MENU</a>
+
+                  <nav class="pcMenuList" aria-label="Page menu">
+                    <a class="pcMenuItem" href="#Top" data-toc="Top">
+                      <span class="pcMenuTitle" data-text="TOP"><span class="pcMenuTitle__stroke">TOP</span></span>
+                      <span class="pcMenuSub">イイじゃん大宮共立病院の介護職</span>
+                    </a>
+
+                    <a class="pcMenuItem" href="#BadImage" data-toc="BadImage">
+                      <span class="pcMenuTitle" data-text="BAD IMAGE"><span class="pcMenuTitle__stroke">BAD IMAGE</span></span>
+                      <span class="pcMenuSub">介護職に悪いイメージを持っていませんか？</span>
+                    </a>
+
+                    <a class="pcMenuItem" href="#Changing" data-toc="Changing">
+                      <span class="pcMenuTitle" data-text="CHANGING"><span class="pcMenuTitle__stroke">CHANGING</span></span>
+                      <span class="pcMenuSub">大宮共立病院の介護職は進化する！</span>
+                    </a>
+
+                    <a class="pcMenuItem" href="#Memory" data-toc="Memory">
+                      <span class="pcMenuTitle" data-text="MEMORY"><span class="pcMenuTitle__stroke">MEMORY</span></span>
+                      <span class="pcMenuSub">先輩のわたしが「ここで働いて良かった」瞬間</span>
+                    </a>
+
+                    <a class="pcMenuItem" href="#Voice" data-toc="Voice">
+                      <span class="pcMenuTitle" data-text="VOICE"><span class="pcMenuTitle__stroke">VOICE</span></span>
+                      <span class="pcMenuSub">先輩たちの声</span>
+                    </a>
+
+                    <a class="pcMenuItem" href="#Data" data-toc="Data">
+                      <span class="pcMenuTitle" data-text="DATA"><span class="pcMenuTitle__stroke">DATA</span></span>
+                      <span class="pcMenuSub">数字でわかる働きやすさ</span>
+                    </a>
+                  </nav>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+    </div><!-- /#lpView -->
+
+    <!-- =========================================================
+      FORM VIEW
+    ========================================================= -->
+    <div id="formView" aria-label="Join form view" data-form-view="1">
+      <div class="formTopBar">
+        <button class="formTopBar__btn" type="button" data-close-form="1" aria-label="募集ページに戻る">
+          募集ページへ戻る
+        </button>
+      </div>
+
+      <!-- ハッシュ互換（#ActionForm） -->
+      <div id="ActionForm" data-form-anchor="1"></div>
+
+      <main class="wrap" data-joinus-root="1">
+        <h1 class="pageTitle">JOIN US!</h1>
+        <p class="pageSub">仕事体験/見学会/WEB説明会 参加フォーム</p>
+
+        <section class="layout">
+          <nav class="steps" aria-label="フォームの進行状況">
+            <a class="stepItem is-active" href="#step1" data-step-link="1">
+              <span class="stepIcon" aria-hidden="true">
+                <img data-step-icon="1" src="assets/Thumbs-up_green.svg" alt="" aria-hidden="true" />
+              </span>
+              <span class="stepText">
+                <span class="stepNum">STEP1</span>
+                <span class="stepLabel">入力情報</span>
+              </span>
+            </a>
+
+            <a class="stepItem" href="#step2" data-step-link="2" aria-disabled="true">
+              <span class="stepIcon" aria-hidden="true">
+                <img data-step-icon="2" src="assets/Thumbs-up_def.svg" alt="" aria-hidden="true" />
+              </span>
+              <span class="stepText">
+                <span class="stepNum">STEP2</span>
+                <span class="stepLabel">確認</span>
+              </span>
+            </a>
+
+            <a class="stepItem" href="#step3" data-step-link="3" aria-disabled="true">
+              <span class="stepIcon" aria-hidden="true">
+                <img data-step-icon="3" src="assets/Thumbs-up_def.svg" alt="" aria-hidden="true" />
+              </span>
+              <span class="stepText">
+                <span class="stepNum">STEP3</span>
+                <span class="stepLabel">完了</span>
+              </span>
+            </a>
+          </nav>
+
+          <div id="step1" class="stepPane is-show">
+            <form id="joinForm" class="form" novalidate data-join-form="1">
+              <div id="formError" class="err" role="alert"></div>
+
+              <div class="field">
+                <div class="labelRow">
+                  <span class="badge req">必須</span>
+                  <label for="name">お名前</label>
+                </div>
+                <div class="control">
+                  <input id="name" name="name" class="input" type="text" placeholder="採用　太郎" autocomplete="name" />
+                </div>
+              </div>
+
+              <div class="field">
+                <div class="labelRow">
+                  <span class="badge req">必須</span>
+                  <span>種別</span>
+                </div>
+                <div class="control">
+                  <div class="radios" role="radiogroup" aria-label="種別">
+                    <label class="radio"><input type="radio" name="kind" value="trial"> 仕事体験</label>
+                    <label class="radio"><input type="radio" name="kind" value="tour"> 見学会</label>
+                    <label class="radio"><input type="radio" name="kind" value="web"> WEB説明会</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="field">
+                <div class="labelRow">
+                  <span class="badge req">必須</span>
+                  <label for="email">メールアドレス</label>
+                </div>
+                <div class="control">
+                  <input
+                    id="email"
+                    name="email"
+                    class="input"
+                    type="email"
+                    placeholder="sample@omiya-kyoritu.or.jp"
+                    autocomplete="email"
+                  />
+                </div>
+              </div>
+
+              <div class="field">
+                <div class="labelRow">
+                  <span class="badge req">必須</span>
+                  <label for="tel">電話番号</label>
+                </div>
+                <div class="control">
+                  <input
+                    id="tel"
+                    name="tel"
+                    class="input"
+                    type="tel"
+                    placeholder="048-686-7152"
+                    autocomplete="tel"
+                  />
+                </div>
+              </div>
+
+              <div class="field">
+                <div class="labelRow">
+                  <span class="badge req">必須</span>
+                  <label for="date1">希望候補日1</label>
+                </div>
+                <div class="control">
+                  <div class="dateWrap">
+                    <input id="date1" name="date1" class="input" type="date" />
+                  </div>
+                  <div class="subRow">
+                    <div class="radios" role="radiogroup" aria-label="希望候補日1の時間帯">
+                      <label class="radio"><input type="radio" name="time1" value="10-12"> 10時〜12時</label>
+                      <label class="radio"><input type="radio" name="time1" value="12-14"> 12時〜14時</label>
+                      <label class="radio"><input type="radio" name="time1" value="14-16"> 14時〜16時</label>
+                      <label class="radio"><input type="radio" name="time1" value="any"> 何時でも可</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="field">
+                <div class="labelRow">
+                  <span class="badge req">必須</span>
+                  <label for="date2">希望候補日2</label>
+                </div>
+                <div class="control">
+                  <div class="dateWrap">
+                    <input id="date2" name="date2" class="input" type="date" />
+                  </div>
+                  <div class="subRow">
+                    <div class="radios" role="radiogroup" aria-label="希望候補日2の時間帯">
+                      <label class="radio"><input type="radio" name="time2" value="10-12"> 10時〜12時</label>
+                      <label class="radio"><input type="radio" name="time2" value="12-14"> 12時〜14時</label>
+                      <label class="radio"><input type="radio" name="time2" value="14-16"> 14時〜16時</label>
+                      <label class="radio"><input type="radio" name="time2" value="any"> 何時でも可</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="field">
+                <div class="labelRow">
+                  <span class="badge req">必須</span>
+                  <label for="date3">希望候補日3</label>
+                </div>
+                <div class="control">
+                  <div class="dateWrap">
+                    <input id="date3" name="date3" class="input" type="date" />
+                  </div>
+                  <div class="subRow">
+                    <div class="radios" role="radiogroup" aria-label="希望候補日3の時間帯">
+                      <label class="radio"><input type="radio" name="time3" value="10-12"> 10時〜12時</label>
+                      <label class="radio"><input type="radio" name="time3" value="12-14"> 12時〜14時</label>
+                      <label class="radio"><input type="radio" name="time3" value="14-16"> 14時〜16時</label>
+                      <label class="radio"><input type="radio" name="time3" value="any"> 何時でも可</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="field">
+                <div class="labelRow">
+                  <span class="badge opt">任意</span>
+                  <label for="note">備考欄</label>
+                </div>
+                <div class="control">
+                  <textarea id="note" name="note" class="textarea"></textarea>
+                </div>
+              </div>
+
+              <div class="actionsRow">
+                <div class="actions">
+                  <button class="btnPill" type="submit" aria-label="入力内容の確認へ進む">
+                    <span class="btnText">入力内容の確認</span>
+                    <span class="btnArrow" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M9 6l6 6-6 6" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div id="step2" class="stepPane">
+            <div class="confirm">
+              <div id="noData" class="emptyBox" style="display:none;">
+                入力内容が見つかりませんでした。STEP1から入力してください。
+              </div>
+
+              <div id="confirmBody" style="display:none;">
+                <div class="cRow">
+                  <div class="labelRow"><span class="badge req">必須</span><span>お名前</span></div>
+                  <div class="cVal" id="v_name"></div>
+                </div>
+
+                <div class="cRow">
+                  <div class="labelRow"><span class="badge req">必須</span><span>種別</span></div>
+                  <div class="cVal" id="v_kind"></div>
+                </div>
+
+                <div class="cRow">
+                  <div class="labelRow"><span class="badge req">必須</span><span>メールアドレス</span></div>
+                  <div class="cVal" id="v_email"></div>
+                </div>
+
+                <div class="cRow">
+                  <div class="labelRow"><span class="badge req">必須</span><span>電話番号</span></div>
+                  <div class="cVal" id="v_tel"></div>
+                </div>
+
+                <div class="cRow">
+                  <div class="labelRow"><span class="badge req">必須</span><span>希望候補日1</span></div>
+                  <div class="cVal cVal--pair"><span id="v_date1"></span><span class="cSub" id="v_time1"></span></div>
+                </div>
+
+                <div class="cRow">
+                  <div class="labelRow"><span class="badge req">必須</span><span>希望候補日2</span></div>
+                  <div class="cVal cVal--pair"><span id="v_date2"></span><span class="cSub" id="v_time2"></span></div>
+                </div>
+
+                <div class="cRow">
+                  <div class="labelRow"><span class="badge req">必須</span><span>希望候補日3</span></div>
+                  <div class="cVal cVal--pair"><span id="v_date3"></span><span class="cSub" id="v_time3"></span></div>
+                </div>
+
+                <div class="cRow">
+                  <div class="labelRow"><span class="badge opt">任意</span><span>備考欄</span></div>
+                  <div class="cVal" id="v_note"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="actionsRow">
+              <div class="actions is-stack">
+                <button id="btnBack" class="btnPill is-ghost" type="button" aria-label="入力画面に戻る">
+                  <span class="btnText">戻る</span>
+                  <span class="btnArrow" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M9 6l6 6-6 6" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                </button>
+
+                <button id="btnSend" class="btnPill is-primary" type="button" aria-label="送信する">
+                  <span class="btnText">送信する</span>
+                  <span class="btnArrow" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M9 6l6 6-6 6" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div id="step3" class="stepPane">
+            <div class="thanks">
+              <div class="thanksInner">
+                <h2 class="thanksTitle"><span class="uline">送信が完了しました</span></h2>
+
+                <p class="thanksLead">
+                  お申込いただきありがとうございます。<br>
+                  2〜3営業日以内に担当者よりご連絡いたしますので、<br>
+                  恐れ入りますがしばらくお待ち下さい。
+                </p>
+
+                <div class="actions">
+                  <button id="btnTop" class="btnPill" type="button" aria-label="ページトップへ戻る">
+                    <span class="btnText">ページトップへ戻る</span>
+                    <span class="btnArrow" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M9 6l6 6-6 6" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </section>
+      </main>
+    </div><!-- /#formView -->
+
+  </div><!-- /#lp-omiya-kaigo -->
+</body>
+</html>
