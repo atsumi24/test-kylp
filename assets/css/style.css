@@ -2540,7 +2540,18 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
 }
 
 @media (max-width: 1023px){
-  #lp-omiya-kaigo #Voice .voiceNav{ display:none !important; }
+  #lp-omiya-kaigo #Voice .voiceStageWrap{
+    display: block;
+    margin-top: -30px;
+  }
+
+  #lp-omiya-kaigo #Voice .voiceStage{
+    width: 100%;
+  }
+
+  #lp-omiya-kaigo #Voice .voiceNav{
+    display:none !important;
+  }
 }
 
 @media (min-width: 1024px){
