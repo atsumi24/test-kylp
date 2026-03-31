@@ -1202,11 +1202,20 @@
       preview = center;
       resetTransformsInstant();
 
-      function stopEvt(e){ e.stopPropagation(); }
+      function stopEvt(e){
+        e.stopPropagation();
+      }
+
+      function stopClickEvt(e){
+        e.preventDefault();
+        e.stopPropagation();
+      }
+
       [$prev, $next].forEach(function(btn){
         if(!btn) return;
         btn.addEventListener("pointerdown", stopEvt);
         btn.addEventListener("touchstart", stopEvt, {passive:true});
+        btn.addEventListener("click", stopClickEvt);
       });
 
       function normalizeDrag(){
@@ -1216,16 +1225,24 @@
         if(dragX > g/2) dragX -= g;
       }
 
-      function clickPrev(){
+      function clickPrev(e){
+        if(e){
+          e.preventDefault();
+          e.stopPropagation();
+        }
         if(isLocked) return;
         normalizeDrag();
         commitAnimated(-1, dragX);
       }
 
-      function clickNext(){
+      function clickNext(e){
+        if(e){
+          e.preventDefault();
+          e.stopPropagation();
+        }
         if(isLocked) return;
         normalizeDrag();
-        commitAnimated( 1, dragX);
+        commitAnimated(1, dragX);
       }
 
       if($prev) $prev.addEventListener("click", clickPrev);
@@ -1259,7 +1276,7 @@
         if(isLocked) return;
 
         var target = e.target;
-        if(target && target.closest('[data-voice-prev], [data-voice-next], [data-voice-dots], .voiceDot, button, a')){
+        if(target && target.closest('[data-voice-prev], [data-voice-next], [data-voice-dots], .voiceDot, a')){
           return;
         }
 
