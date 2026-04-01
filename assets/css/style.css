@@ -812,6 +812,29 @@
     width: min(var(--center-w, 420px), 100%) !important;
     left:auto !important;
     transform:none !important;
+    min-height: calc(100svh - var(--header-h));
+    display: flex;
+    align-items: center;
+  }
+
+  #lp-omiya-kaigo #Attention .attHero__inner{
+    width: 100%;
+    min-height: auto;
+    padding-top: 24px;
+    padding-bottom: 16px;
+  }
+
+  #lp-omiya-kaigo #Attention .attHero__title{
+    transform: translateY(0);
+  }
+
+  #lp-omiya-kaigo #Attention .catchStack{
+    transform: translateY(0) scale(1);
+    transform-origin: 50% 0%;
+  }
+
+  #lp-omiya-kaigo #Attention .attHero__chars{
+    transform: translateY(-10px);
   }
 }
 
