@@ -2277,8 +2277,8 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
 #lp-omiya-kaigo #Memory .memMoment{
   position: absolute;
   top: 10px;
-  right: -18px;
-  width: 24px;
+  right: clamp(6px, 2vw, 10px);
+  width: clamp(20px, 5vw, 24px);
   height: auto;
   filter: drop-shadow(0 10px 16px rgba(0,0,0,.12));
   pointer-events: none;
