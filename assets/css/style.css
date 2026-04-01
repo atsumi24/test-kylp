@@ -95,25 +95,22 @@
 #lp-omiya-kaigo,
 #lp-omiya-kaigo *{
   box-sizing:border-box;
+  min-width: 0;
 }
 
 #lp-omiya-kaigo{
   width:100%;
+  max-width:100%;
   margin:0 auto;
   color:var(--fg);
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans JP", sans-serif;
   line-height:1.6;
-  overflow-x: clip;
-}
-
-@supports not (overflow-x: clip){
-  #lp-omiya-kaigo{
-    overflow-x:hidden;
-  }
+  overflow-x:hidden;
 }
 
 #lp-omiya-kaigo img,
 #lp-omiya-kaigo svg{
+  display:block;
   max-width:100%;
   height:auto;
 }
@@ -137,10 +134,15 @@
 /* =========================
    Frame / Center
 ========================= */
-#lp-omiya-kaigo.aidmaFrame{ width:100%; margin:0 auto; }
+#lp-omiya-kaigo.aidmaFrame{
+  width:100%;
+  max-width:100%;
+  margin:0 auto;
+}
 
 #lp-omiya-kaigo .aidmaCenter{
   width:100%;
+  max-width:100%;
   margin:0 auto;
   padding:0;
 }
@@ -152,6 +154,7 @@
   padding:0;
   border:none;
   background:transparent;
+  max-width:100%;
 }
 
 #lp-omiya-kaigo .secHead{
@@ -174,7 +177,10 @@
   margin:0;
 }
 
-#lp-omiya-kaigo .secBody{ margin-top:8px; }
+#lp-omiya-kaigo .secBody{
+  margin-top:8px;
+  max-width:100%;
+}
 
 /* =========================
    Rails: base visibility
@@ -241,6 +247,7 @@
   align-items: center;
   justify-content: center;
   width: 180px;
+  max-width:100%;
   height: 54px;
   border-radius: 999px;
   background: var(--menu-pill-bg);
@@ -264,7 +271,7 @@
 }
 
 #lp-omiya-kaigo .pcMenuItem{
-  width: var(--pcmenu-w);
+  width: min(var(--pcmenu-w), 100%);
   text-decoration: none;
   display: block;
   padding: 2px 0;
@@ -370,7 +377,6 @@
   }
 
   #lp-omiya-kaigo .pcLeftBrandRow img{
-    display:block;
     height: 64px;
     width:auto;
     object-fit:contain;
@@ -420,7 +426,6 @@
     top:12%;
     width:75%;
     height:75%;
-    display:block;
     object-fit:contain;
     z-index: 3;
     animation: lpOmiyaSpinR 18s linear infinite;
@@ -449,7 +454,6 @@
   }
 
   #lp-omiya-kaigo .pcBadgeBurstScale img{
-    display:block;
     width:100%;
     height:100%;
     object-fit:contain;
@@ -467,7 +471,6 @@
   }
 
   #lp-omiya-kaigo .pcLeftBtnImg{
-    display:block;
     width:100%;
     height:auto;
     transform: translateZ(0);
@@ -499,7 +502,7 @@
   #lp-omiya-kaigo .aidmaCenter{
     position:relative;
     z-index:1;
-    width:var(--center-w);
+    width:min(var(--center-w), 100%);
     margin:0 auto;
   }
 }
@@ -589,6 +592,7 @@
   background:#F9DA49;
   position:relative;
   overflow:hidden;
+  width:100%;
 }
 
 #lp-omiya-kaigo .attPC{ display:none; }
@@ -597,6 +601,7 @@
   position:relative;
   z-index:2;
   width: min(420px, 100%);
+  max-width:100%;
   margin: 0 auto;
   text-align:center;
   display:grid;
@@ -626,6 +631,8 @@
   align-items:center;
   gap:8px;
   justify-content:center;
+  text-align:center;
+  flex-wrap:wrap;
 }
 
 #lp-omiya-kaigo .attHero__kickerDeco{
@@ -641,7 +648,6 @@
 }
 
 #lp-omiya-kaigo .catchStack img{
-  display:block;
   width:100%;
   height:auto;
   transform: translateZ(0);
@@ -692,7 +698,6 @@
   width: auto;
   max-width: 100%;
   margin: 0 auto;
-  display: block;
   object-fit: contain;
   object-position: 50% 100%;
   justify-self: center;
@@ -717,7 +722,6 @@
 }
 
 #lp-omiya-kaigo .attHero__nextIcon{
-  display:block;
   width: 45px;
   height: 45px;
 }
@@ -729,17 +733,16 @@
 
 @media (max-width:1023px){
   #lp-omiya-kaigo #Attention .attHero{
-    width: 100vw;
+    width: 100%;
     position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    min-height: calc(100svh - var(--header-h));
+    left: auto;
+    transform: none;
+    min-height: auto;
     height: auto;
   }
 
-  #lp-omiya-kaigo #Attention .attHero__inner{ min-height: 100%; }
-
   #lp-omiya-kaigo #Attention .attHero__inner{
+    min-height: auto;
     padding-top: clamp(28px, calc(60px - 3svh), 44px);
     padding-bottom: clamp(12px, calc(26px - 1.5svh), 18px);
   }
@@ -752,9 +755,9 @@
     margin-bottom: clamp(8px, calc(22px - 1.6svh), 14px);
   }
 
-#lp-omiya-kaigo #Attention .attHero__chars{
-  transform: translateY(clamp(-24px, -3svh, 0px));
-}
+  #lp-omiya-kaigo #Attention .attHero__chars{
+    transform: translateY(clamp(-14px, -2svh, 0px));
+  }
 
   #lp-omiya-kaigo #Attention .attHero__next{
     margin-top: clamp(6px, calc(22px - 1.7svh), 12px);
@@ -910,7 +913,6 @@ html.att-intro #lp-omiya-kaigo #Attention .attHero__nextIcon.is-pulse{
   }
 
   #lp-omiya-kaigo .mHeader__brands img{
-    display:block;
     height: 36px;
     width:auto;
     object-fit:contain;
@@ -975,7 +977,8 @@ html.att-intro #lp-omiya-kaigo #Attention .attHero__nextIcon.is-pulse{
     top:0;
     right:0;
     height: 100svh;
-    width: var(--drawer-w);
+    width: min(var(--drawer-w), 100%);
+    max-width:100%;
     background: var(--drawer-bg);
     -webkit-backdrop-filter: blur(var(--drawer-blur));
     backdrop-filter: blur(var(--drawer-blur));
@@ -1251,6 +1254,7 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
   position:relative;
   overflow:hidden;
   background: #59B6E9;
+  width:100%;
 }
 
 #lp-omiya-kaigo #BadImage .badHero::after{
@@ -1338,6 +1342,7 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
   position:relative;
   z-index:2;
   width:min(420px, 100%);
+  max-width:100%;
   margin:0 auto;
   padding: 22px 18px 10px;
   display:grid;
@@ -1387,7 +1392,6 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
 }
 
 #lp-omiya-kaigo #BadImage .badBubble > img{
-  display:block;
   width:100%;
   height:100%;
   object-fit: contain;
@@ -1457,6 +1461,7 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
   left:50%;
   bottom: var(--bad-illust-b);
   width: var(--bad-illust-w);
+  max-width:100%;
   height:auto;
   transform: translateX(-50%);
   z-index:1;
@@ -1472,14 +1477,19 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
   }
 
   #lp-omiya-kaigo #BadImage .badHero{
-    width: 100vw;
+    width: 100%;
     position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    left: auto;
+    transform: none;
   }
 
   #lp-omiya-kaigo #BadImage .badHero__inner{
-    min-height: clamp(560px, calc(100svh - var(--header-h)), 720px);
+    min-height: auto;
+    padding-bottom: 10px;
+  }
+
+  #lp-omiya-kaigo #BadImage .badHero__stage{
+    min-height: clamp(430px, 72svh, 560px);
   }
 }
 
@@ -1564,7 +1574,7 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
 }
 
 #lp-omiya-kaigo #Changing .secBody{
-  max-width: var(--center-w, 420px);
+  max-width: min(var(--center-w, 420px), 100%);
   width: 100%;
   margin-left: auto !important;
   margin-right: auto !important;
@@ -1603,6 +1613,8 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
   padding: 8px 10px 10px;
   color: #1f1f1f;
   margin: 0 !important;
+  flex-wrap: wrap;
+  justify-content:center;
 }
 
 #lp-omiya-kaigo #Changing .chgFixed__black{ color: #1f1f1f; }
@@ -1746,7 +1758,8 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
   top: 28px;
   left: 22px;
   width: calc(100% - 22px);
-  height: 31px;
+  min-width:0;
+  min-height: 31px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -1755,7 +1768,7 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
   font-family: "Noto Sans JP", system-ui, -apple-system, sans-serif;
   font-weight: 900;
   font-size: 20px;
-  line-height: 1;
+  line-height: 1.25;
   color: #fff;
   z-index: 3;
 }
@@ -1765,7 +1778,8 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
   top: 55px;
   left: 22px;
   width: calc(100% - 22px);
-  height: 31px;
+  min-width:0;
+  min-height: 31px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -1774,11 +1788,8 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
   font-family: "Noto Sans JP", system-ui, -apple-system, sans-serif;
   font-weight: 500;
   font-size: 12px;
-  line-height: 1;
+  line-height: 1.35;
   color: #fff;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   z-index: 3;
 }
 
@@ -1795,7 +1806,7 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
 #lp-omiya-kaigo #Changing .chgCard__photoImg{
   width: 100%;
   height: 100%;
-  display: block;
+  object-fit: cover;
   will-change: transform, opacity;
 }
 
@@ -1855,7 +1866,6 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
   width: 100%;
   height: 100%;
   object-fit: contain;
-  display: block;
 }
 
 #lp-omiya-kaigo #Changing .chgCard__body{
@@ -1865,7 +1875,7 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
   font-family: "Noto Sans JP", system-ui, -apple-system, sans-serif;
   font-weight: 700;
   font-size: 21px;
-  line-height: 40px;
+  line-height: 1.8;
   color: #000;
 }
 
@@ -1965,7 +1975,7 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
   #lp-omiya-kaigo #Changing .chgFixed__headline{ font-size: 21px; }
   #lp-omiya-kaigo #Changing .chgFixed__invert{ font-size: 32px; }
   #lp-omiya-kaigo #Changing .chgCard__title{ font-size: 19px; }
-  #lp-omiya-kaigo #Changing .chgCard__body{ font-size: 20px; line-height: 38px; }
+  #lp-omiya-kaigo #Changing .chgCard__body{ font-size: 20px; line-height: 1.7; }
 }
 
 @media (min-width: 1024px){
@@ -1994,9 +2004,9 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
   #lp-omiya-kaigo #Changing .chgFixed__invert,
   #lp-omiya-kaigo #Changing .chgCard__title,
   #lp-omiya-kaigo #Changing .chgCard__body{
-    white-space: nowrap;
-    word-break: keep-all;
-    overflow-wrap: normal;
+    white-space: normal;
+    word-break: normal;
+    overflow-wrap: anywhere;
   }
 }
 
@@ -2042,6 +2052,7 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
 #lp-omiya-kaigo #SubAction .subBatch__stage{
   position: relative;
   width: min(320px, 92vw);
+  max-width:100%;
   aspect-ratio: 1 / 1;
 }
 
@@ -2089,7 +2100,6 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
 }
 
 #lp-omiya-kaigo #SubAction .subBatch__burstScale img{
-  display:block;
   width:100%;
   height:100%;
   object-fit:contain;
@@ -2124,6 +2134,7 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
   box-shadow: 0 18px 40px rgba(0,0,0,.18);
   transform: none;
   position: relative;
+  max-width:100%;
 }
 
 #lp-omiya-kaigo .aidmaSection--subaction .subRibbon__text{
@@ -2152,6 +2163,9 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
 
   #lp-omiya-kaigo .aidmaSection--subaction .subRibbon__text{
     font-size: 14px;
+    white-space: normal;
+    overflow-wrap:anywhere;
+    text-align:center;
   }
 }
 
@@ -2179,19 +2193,21 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
   position: relative;
   overflow: hidden;
   background: #D4F15F;
+  width:100%;
 }
 
 @media (max-width:1023px){
   #lp-omiya-kaigo #Memory .memHero{
-    width: 100vw;
+    width: 100%;
     position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    left: auto;
+    transform: none;
   }
 }
 
 #lp-omiya-kaigo #Memory .memHero__inner{
   width: min(var(--center-w, 420px), 100%);
+  max-width:100%;
   margin: 0 auto;
   padding: 34px 18px 44px;
 }
@@ -2202,7 +2218,6 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
 }
 
 #lp-omiya-kaigo #Memory .memHead__title{
-  display:block;
   width: min(260px, 72%);
   height:auto;
   margin: 0 auto 10px;
@@ -2235,7 +2250,6 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
 }
 
 #lp-omiya-kaigo #Memory .memPhoto{
-  display:block;
   width: 97%;
   height: auto;
 }
@@ -2325,6 +2339,7 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
 
 #lp-omiya-kaigo #Voice .voiceWrap{
   width:min(420px, 100%);
+  max-width:100%;
   margin:0 auto;
   padding:26px 18px 0;
   font-family: "Noto Sans JP", system-ui, -apple-system, "Segoe UI", Roboto, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
@@ -2335,7 +2350,6 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
 #lp-omiya-kaigo #Voice .voiceTitle{ text-align:center; }
 
 #lp-omiya-kaigo #Voice .voiceTitleSvg{
-  display:block;
   width:min(320px, 84%);
   height:auto;
   margin:0 auto;
@@ -2351,6 +2365,7 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
   position:relative;
   margin:18px auto 0;
   width:min(400px, 100%);
+  max-width:100%;
   height:240px;
 }
 
@@ -2391,10 +2406,10 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
   font-weight: 800;
   line-height: 1.5;
   text-align: center;
-  white-space: nowrap;
+  white-space: normal;
   word-break: normal;
-  overflow-wrap: normal;
-  overflow: hidden;
+  overflow-wrap: anywhere;
+  overflow: visible;
   min-height: 0;
   transform-origin: 50% 50%;
 }
@@ -2443,7 +2458,7 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
 }
 
 #lp-omiya-kaigo #Voice .voicePerson--main{
-  width: var(--voice-person-w);
+  width: min(var(--voice-person-w), 100%);
   left: 50%;
   transform: translateX(-50%) scale(1);
   z-index: 3;
@@ -2452,7 +2467,7 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
 
 #lp-omiya-kaigo #Voice .voicePerson--left,
 #lp-omiya-kaigo #Voice .voicePerson--right{
-  width: var(--voice-person-w);
+  width: min(var(--voice-person-w), 100%);
   left: 50%;
   bottom: 0;
   z-index: 1;
@@ -2466,7 +2481,7 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
 
 #lp-omiya-kaigo #Voice .voicePerson--left2,
 #lp-omiya-kaigo #Voice .voicePerson--right2{
-  width: var(--voice-person-w);
+  width: min(var(--voice-person-w), 100%);
   left: 50%;
   bottom: 0;
   opacity: .95;
@@ -2561,13 +2576,17 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
   font-weight:900;
   font-size:13px;
   line-height:1.6;
+  overflow-wrap:anywhere;
 }
 
 @media (max-width: 340px){
   #lp-omiya-kaigo #Voice .voiceStage{ height: 340px; }
   #lp-omiya-kaigo #Voice{ --voice-person-w: 190px; }
   #lp-omiya-kaigo #Voice .voiceNav{ margin-bottom: 48px; }
-  #lp-omiya-kaigo #Voice .voiceBubbleWrap{ height: 240px; }
+  #lp-omiya-kaigo #Voice .voiceBubbleWrap{ height: 250px; }
+  #lp-omiya-kaigo #Voice .voiceBubble{
+    padding:62px 36px 12px;
+  }
 }
 
 @media (max-width: 1023px){
@@ -2597,7 +2616,7 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
 #lp-omiya-kaigo #Data .secBody{ padding: 18px 16px 26px; }
 #lp-omiya-kaigo #Data .dataWrap{ max-width: 420px; margin: 0 auto; }
 #lp-omiya-kaigo #Data .dataHero{ display:flex; justify-content:center; align-items:center; margin: 2px 0 14px; }
-#lp-omiya-kaigo #Data .dataTitleImg{ width: min(240px, 72vw); height: auto; display:block; }
+#lp-omiya-kaigo #Data .dataTitleImg{ width: min(240px, 72vw); height: auto; }
 #lp-omiya-kaigo #Data .dataCards{ display:flex; flex-direction:column; gap: 18px; }
 
 #lp-omiya-kaigo #Data .dataCard{
@@ -2640,7 +2659,6 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
 #lp-omiya-kaigo #Data .dataDigitImg{
   height: 82px;
   width: auto;
-  display: block;
   object-fit: contain;
 }
 
@@ -2700,7 +2718,7 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
 
 #lp-omiya-kaigo #Action .actionPC,
 #lp-omiya-kaigo #Action .actionSP{
-  max-width: var(--center-w, 420px);
+  max-width: min(var(--center-w, 420px), 100%);
   margin: 0 auto;
 }
 
@@ -2711,14 +2729,12 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
 }
 
 #lp-omiya-kaigo #Action .actionPC__title{
-  display:block;
   width: min(520px, 92%);
   height:auto;
   margin: 0 auto 10px;
 }
 
 #lp-omiya-kaigo #Action .actionPC__illust{
-  display:block;
   width: min(360px, 78%);
   height:auto;
   margin: 0 auto;
@@ -2733,6 +2749,7 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
   display:grid;
   place-items:center;
   width: min(360px, 92%);
+  max-width:100%;
   margin: 0 auto 14px;
   text-decoration:none;
   -webkit-tap-highlight-color: transparent;
@@ -2742,7 +2759,6 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
 }
 
 #lp-omiya-kaigo #Action .actionBatch img{
-  display:block;
   max-width: 100%;
   height:auto;
 }
@@ -2750,6 +2766,7 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
 #lp-omiya-kaigo #Action .actionBatch .subBatch__stage{
   position: relative !important;
   width: var(--action-stage-w) !important;
+  max-width:100% !important;
   aspect-ratio: 1 / 1 !important;
   height: auto !important;
   margin: 0 auto !important;
@@ -2806,7 +2823,6 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
 }
 
 #lp-omiya-kaigo #Action .actionBatch .subBatch__burstScale img{
-  display:block !important;
   width:100% !important;
   height:100% !important;
   object-fit:contain !important;
@@ -2823,7 +2839,6 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
 }
 
 #lp-omiya-kaigo #Action .actionSP__illust{
-  display:block;
   width: min(200px, 100%);
   height:auto;
   margin: -4px 150px 18px;
@@ -2847,7 +2862,6 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
 }
 
 #lp-omiya-kaigo #Action .actionBtns .pcLeftBtnImg{
-  display:block;
   width:100%;
   height:auto;
 }
@@ -2867,7 +2881,6 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
 }
 
 #lp-omiya-kaigo #Action .actionThanks{
-  display:block;
   width: min(260px, 70%);
   height:auto;
 }
@@ -2885,7 +2898,6 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
 #lp-omiya-kaigo #Action .actionTop img{
   width:100%;
   height:auto;
-  display:block;
 }
 
 @media (min-width: 992px){
@@ -2900,6 +2912,10 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
 @media (max-width: 991px){
   #lp-omiya-kaigo #Action .actionPC{ display:none; }
   #lp-omiya-kaigo #Action .actionSP{ display:block; }
+
+  #lp-omiya-kaigo #Action .actionSP__illust{
+    margin: -4px auto 18px;
+  }
 }
 
 @keyframes lpOmiyaActionSpinR{
