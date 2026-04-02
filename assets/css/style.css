@@ -1259,8 +1259,6 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
     animation:none !important;
     filter:none !important;
     opacity:1 !important;
-    -webkit-mask-size: 100% 100% !important;
-    mask-size: 100% 100% !important;
     transform:none !important;
   }
 }
