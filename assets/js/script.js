@@ -565,50 +565,149 @@
 
 
     (function(){
-      var ROOT_HTML = document.documentElement;
-      var CLS  = "att-intro";
+(function(){
+  if (window.__ATTENTION_SEQUENCE_INITED__) return;
+  window.__ATTENTION_SEQUENCE_INITED__ = true;
 
-      function shouldRun(){
-        if(prefersReducedMotion()) return false;
+  var ROOT_HTML = document.documentElement;
+  var CLS = "att-intro";
 
-        var att = rq("#Attention");
-        if(!att) return false;
+  function shouldRun(){
+    if(prefersReducedMotion()) return false;
 
-        return true;
-      }
+    var att = rq("#Attention");
+    if(!att) return false;
 
-      function run(){
-        if(!shouldRun()) return;
+    return true;
+  }
 
-        ROOT_HTML.classList.add(CLS);
+  function firstFound(selectors, scope){
+    for(var i=0; i<selectors.length; i++){
+      var el = q(selectors[i], scope);
+      if(el) return el;
+    }
+    return null;
+  }
 
-        var r = getRoot();
-        var dur = r ? getComputedStyle(r).getPropertyValue("--att-intro-dur") : "4200ms";
-        var ms = 4200;
-        if(dur.indexOf("ms") > -1) ms = parseFloat(dur);
-        else if(dur.indexOf("s") > -1) ms = parseFloat(dur) * 1000;
+  function setHidden(el, y){
+    if(!el) return;
+    el.style.opacity = "0";
+    el.style.transform = "translateY(" + (y || 12) + "px)";
+    el.style.transition = "opacity 520ms ease, transform 520ms ease";
+    el.style.willChange = "opacity, transform";
+  }
 
-        window.setTimeout(function(){
-          ROOT_HTML.classList.remove(CLS);
-        }, ms + 120);
-      }
+  function showEl(el){
+    if(!el) return;
+    requestAnimationFrame(function(){
+      el.style.opacity = "1";
+      el.style.transform = "translateY(0)";
+    });
+  }
 
-      run();
-    })();
+  function showGroup(list){
+    list.forEach(function(el){ showEl(el); });
+  }
 
+  function clearInline(el){
+    if(!el) return;
+    el.style.removeProperty("opacity");
+    el.style.removeProperty("transform");
+    el.style.removeProperty("transition");
+    el.style.removeProperty("will-change");
+  }
 
-    (function(){
-      if (window.__ATTENTION_NEXTICON_PULSE_INITED__) return;
-      window.__ATTENTION_NEXTICON_PULSE_INITED__ = true;
+  function clearGroup(list){
+    list.forEach(function(el){ clearInline(el); });
+  }
 
-      if (prefersReducedMotion()) return;
+  function run(){
+    if(!shouldRun()) return;
 
-      var icon = rq("#Attention .attHero__nextIcon");
-      if(!icon) return;
+    var att = rq("#Attention");
+    if(!att) return;
 
-      var delay = document.documentElement.classList.contains("att-intro") ? 1700 : 0;
-      setTimeout(function(){ icon.classList.add("is-pulse"); }, delay);
-    })();
+    var lead = firstFound([
+      ".attHero__lead",
+      ".attLead",
+      ".attHero__kicker",
+      ".attHero__copyTop"
+    ], att);
+
+    var catchStack = firstFound([
+      ".catchStack",
+      ".attHero__catch",
+      ".attHero__copyMain"
+    ], att);
+
+    var nextWrap = firstFound([
+      ".attHero__next",
+      ".attHero__nextWrap",
+      ".attHero__nextArea"
+    ], att);
+
+    var nextIcon = firstFound([
+      ".attHero__nextIcon"
+    ], att);
+
+    var nextText = firstFound([
+      ".attHero__nextText"
+    ], att);
+
+    var nextTargets = [];
+    if(nextWrap){
+      nextTargets.push(nextWrap);
+    }else{
+      if(nextIcon) nextTargets.push(nextIcon);
+      if(nextText) nextTargets.push(nextText);
+    }
+
+    ROOT_HTML.classList.add(CLS);
+
+    setHidden(lead, 10);
+    setHidden(catchStack, 14);
+    nextTargets.forEach(function(el){ setHidden(el, 10); });
+
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
+
+        // 1番目：「キツそう？いや意外と」
+        showEl(lead);
+
+        // 2番目：「いいじゃん〜介護職」＋シャドウ
+        setTimeout(function(){
+          showEl(catchStack);
+        }, 650);
+
+        // 3番目：NEXTボタン＋テキスト
+        setTimeout(function(){
+          showGroup(nextTargets);
+
+          if(nextIcon){
+            setTimeout(function(){
+              nextIcon.classList.add("is-pulse");
+            }, 120);
+          }
+        }, 1450);
+      });
+    });
+
+    var r = getRoot();
+    var dur = r ? getComputedStyle(r).getPropertyValue("--att-intro-dur") : "4200ms";
+    var ms = 4200;
+    if(dur.indexOf("ms") > -1) ms = parseFloat(dur);
+    else if(dur.indexOf("s") > -1) ms = parseFloat(dur) * 1000;
+
+    window.setTimeout(function(){
+      ROOT_HTML.classList.remove(CLS);
+      clearInline(lead);
+      clearInline(catchStack);
+      clearGroup(nextTargets);
+    }, Math.max(ms, 2400) + 120);
+  }
+
+  run();
+})();
 
 
     (function(){
