@@ -2700,7 +2700,7 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
     --voice-bubble-pad-top: clamp(17px, 5.0vw, 33px);
     --voice-bubble-pad-x: clamp(24px, 7.6vw, 36px);
     --voice-bubble-pad-bottom: 18px;
-    --voice-text-size: clamp(11.5px, 3.75vw, 14px);
+    --voice-text-size: clamp(11.5px, 3.3vw, 13px);
     --voice-meta-size: clamp(11.5px, 3.3vw, 13px);
     --voice-text-max: 19em;
   }
