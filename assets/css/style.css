@@ -2419,7 +2419,7 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
   /* 吹き出しの安定化用 */
   --voice-bubble-maxw: 400px;
   --voice-bubble-h: clamp(232px, 58vw, 252px);
-  --voice-bubble-pad-top: clamp(54px, 14vw, 70px);
+  --voice-bubble-pad-top: clamp(48px, 12.5vw, 64px);
   --voice-bubble-pad-x: clamp(28px, 8.6vw, 50px);
   --voice-bubble-pad-bottom: clamp(18px, 5vw, 28px);
 
