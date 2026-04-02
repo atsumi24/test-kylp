@@ -1130,28 +1130,28 @@ html.att-intro #lp-omiya-kaigo #Attention .attHero__kicker{
   opacity: 0;
   filter: blur(10px);
   will-change: opacity, filter;
-  animation: lpOmiyaAttFadeInKicker 560ms cubic-bezier(.16,1,.3,1) 0ms both;
+  animation: lpOmiyaAttFadeInFirst var(--att-intro-dur) var(--att-intro-ease) both;
 }
 
 html.att-intro #lp-omiya-kaigo #Attention .attHero__chars{
-  opacity: 1;
-  filter: none;
-  will-change: auto;
+  opacity: 0;
+  filter: blur(12px);
+  will-change: opacity, filter;
+  animation: lpOmiyaAttFadeInChars var(--att-intro-dur) var(--att-intro-ease) both;
 }
 
 html.att-intro #lp-omiya-kaigo #Attention .attHero__next{
   opacity: 0;
   filter: blur(12px);
   will-change: opacity, filter;
-  animation: lpOmiyaAttFadeInNext 560ms cubic-bezier(.16,1,.3,1) 1500ms both;
+  animation: lpOmiyaAttFadeInAfterCatch var(--att-intro-dur) var(--att-intro-ease) both;
 }
 
 html.att-intro #lp-omiya-kaigo #Attention .catchFace{
-  will-change: transform, filter, opacity;
-  opacity: 0;
+  will-change: transform, filter;
   transform: translate3d(0, 26px, 0);
   filter: blur(10px);
-  animation: lpOmiyaCatchFaceUp 760ms cubic-bezier(.16,1,.3,1) 620ms forwards;
+  animation: lpOmiyaCatchFaceUp var(--shadow-nyoki-dur) cubic-bezier(.16,1,.3,1) var(--shadow-nyoki-delay) forwards;
 }
 
 html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
@@ -1161,9 +1161,8 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
   mask-position: 50% 100%;
   -webkit-mask-size: 100% 0%;
   mask-size: 100% 0%;
-  will-change: -webkit-mask-size, mask-size, opacity;
-  opacity: 1;
-  animation: lpOmiyaShadowNyokiMask 760ms cubic-bezier(.16,1,.3,1) 780ms forwards;
+  will-change: -webkit-mask-size, mask-size;
+  animation: lpOmiyaShadowNyokiMask var(--shadow-nyoki-dur) cubic-bezier(.16,1,.3,1) calc(var(--shadow-nyoki-delay) + 220ms) forwards;
 }
 
 @keyframes lpOmiyaShadowNyokiMask{
@@ -1199,23 +1198,60 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
   100%{ opacity:0; }
 }
 
+/* kicker は 1番目 */
+@keyframes lpOmiyaAttFadeInFirst{
+  0%{
+    opacity:0;
+    filter: blur(14px);
+  }
+  10%{
+    opacity:1;
+    filter: blur(0);
+  }
+  100%{
+    opacity:1;
+    filter:none;
+  }
+}
+
+/* chars は 2番目（catchFace と同タイミング帯） */
 @keyframes lpOmiyaAttFadeInChars{
-  0%{ opacity:0; filter: blur(14px); }
-  24%{ opacity:1; filter: blur(0); }
-  100%{ opacity:1; filter: none; }
+  0%{
+    opacity:0;
+    filter: blur(14px);
+  }
+  14%{
+    opacity:0;
+    filter: blur(14px);
+  }
+  32%{
+    opacity:1;
+    filter: blur(0);
+  }
+  100%{
+    opacity:1;
+    filter:none;
+  }
 }
 
-@keyframes lpOmiyaAttFadeInNext{
-  0%{ opacity:0; filter: blur(14px); }
-  78%{ opacity:0; filter: blur(14px); }
-  100%{ opacity:1; filter: none; }
-}
-
-@keyframes lpOmiyaAttFadeInLate{
-  0%{ opacity:0; filter: blur(14px); }
-  70%{ opacity:0; filter: blur(14px); }
-  92%{ opacity:1; filter: blur(0); }
-  100%{ opacity:1; filter: none; }
+/* NEXT は 3番目 */
+@keyframes lpOmiyaAttFadeInAfterCatch{
+  0%{
+    opacity:0;
+    filter: blur(14px);
+  }
+  42%{
+    opacity:0;
+    filter: blur(14px);
+  }
+  62%{
+    opacity:1;
+    filter: blur(0);
+  }
+  100%{
+    opacity:1;
+    filter:none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce){
