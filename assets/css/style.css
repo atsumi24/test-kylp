@@ -1130,28 +1130,28 @@ html.att-intro #lp-omiya-kaigo #Attention .attHero__kicker{
   opacity: 0;
   filter: blur(10px);
   will-change: opacity, filter;
-  animation: lpOmiyaAttFadeInLate var(--att-intro-dur) var(--att-intro-ease) both;
+  animation: lpOmiyaAttFadeInKicker 560ms cubic-bezier(.16,1,.3,1) 0ms both;
 }
 
 html.att-intro #lp-omiya-kaigo #Attention .attHero__chars{
-  opacity: 0;
-  filter: blur(12px);
-  will-change: opacity, filter;
-  animation: lpOmiyaAttFadeInChars var(--att-intro-dur) var(--att-intro-ease) both;
+  opacity: 1;
+  filter: none;
+  will-change: auto;
 }
 
 html.att-intro #lp-omiya-kaigo #Attention .attHero__next{
   opacity: 0;
   filter: blur(12px);
   will-change: opacity, filter;
-  animation: lpOmiyaAttFadeInNext var(--att-intro-dur) var(--att-intro-ease) both;
+  animation: lpOmiyaAttFadeInNext 560ms cubic-bezier(.16,1,.3,1) 1500ms both;
 }
 
 html.att-intro #lp-omiya-kaigo #Attention .catchFace{
-  will-change: transform, filter;
+  will-change: transform, filter, opacity;
+  opacity: 0;
   transform: translate3d(0, 26px, 0);
   filter: blur(10px);
-  animation: lpOmiyaCatchFaceUp var(--shadow-nyoki-dur) cubic-bezier(.16,1,.3,1) var(--shadow-nyoki-delay) forwards;
+  animation: lpOmiyaCatchFaceUp 760ms cubic-bezier(.16,1,.3,1) 620ms forwards;
 }
 
 html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
@@ -1161,8 +1161,9 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
   mask-position: 50% 100%;
   -webkit-mask-size: 100% 0%;
   mask-size: 100% 0%;
-  will-change: -webkit-mask-size, mask-size;
-  animation: lpOmiyaShadowNyokiMask var(--shadow-nyoki-dur) cubic-bezier(.16,1,.3,1) calc(var(--shadow-nyoki-delay) + 220ms) forwards;
+  will-change: -webkit-mask-size, mask-size, opacity;
+  opacity: 1;
+  animation: lpOmiyaShadowNyokiMask 760ms cubic-bezier(.16,1,.3,1) 780ms forwards;
 }
 
 @keyframes lpOmiyaShadowNyokiMask{
