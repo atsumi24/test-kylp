@@ -596,6 +596,34 @@
     ROOT_HTML.classList.remove(PREP_CLS);
   }
 
+  function forceReflow(){
+    void document.body.offsetHeight;
+  }
+
+  function restartAttentionAnimations(){
+    var att = rq("#Attention");
+    if(!att) return;
+
+    var targets = [
+      q(".attHero", att),
+      q(".attHero__kicker", att),
+      q(".attHero__chars", att),
+      q(".attHero__next", att),
+      q(".catchFace", att),
+      q(".catchShadow", att)
+    ].filter(Boolean);
+
+    targets.forEach(function(el){
+      el.style.animation = "none";
+    });
+
+    forceReflow();
+
+    targets.forEach(function(el){
+      el.style.animation = "";
+    });
+  }
+
   function run(){
     if(started) return;
 
@@ -607,14 +635,17 @@
     started = true;
 
     requestAnimationFrame(function(){
-      requestAnimationFrame(function(){
-        ROOT_HTML.classList.remove(PREP_CLS);
-        ROOT_HTML.classList.add(CLS);
+      ROOT_HTML.classList.remove(CLS);
+      ROOT_HTML.classList.remove(PREP_CLS);
 
-        window.setTimeout(function(){
-          ROOT_HTML.classList.remove(CLS);
-        }, getDurationMs() + 120);
-      });
+      forceReflow();
+
+      ROOT_HTML.classList.add(CLS);
+      restartAttentionAnimations();
+
+      window.setTimeout(function(){
+        ROOT_HTML.classList.remove(CLS);
+      }, getDurationMs() + 120);
     });
   }
 
