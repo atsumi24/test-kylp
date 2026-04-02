@@ -1112,9 +1112,8 @@ html.att-intro #lp-omiya-kaigo #Attention .attHero__nextIcon.is-pulse{
    Attention Intro Animation
 ========================================================= */
 
-/* 事前準備：初回描画から最初の見え方を固定する */
-html.att-intro-prep #lp-omiya-kaigo #Attention .attHero::before,
-html.att-intro #lp-omiya-kaigo #Attention .attHero::before{
+/* 初期状態（最初の描画で見せない） */
+html.att-intro-prep #lp-omiya-kaigo #Attention .attHero::before{
   content:"";
   position:absolute;
   inset:-20%;
@@ -1128,155 +1127,118 @@ html.att-intro #lp-omiya-kaigo #Attention .attHero::before{
   opacity:0;
 }
 
-html.att-intro-prep #lp-omiya-kaigo #Attention .attHero__kicker,
-html.att-intro #lp-omiya-kaigo #Attention .attHero__kicker{
+html.att-intro-prep #lp-omiya-kaigo #Attention .attHero__kicker{
   opacity:0;
   filter: blur(10px);
-  will-change: opacity, filter;
 }
 
-html.att-intro-prep #lp-omiya-kaigo #Attention .attHero__chars,
-html.att-intro #lp-omiya-kaigo #Attention .attHero__chars{
+html.att-intro-prep #lp-omiya-kaigo #Attention .attHero__chars{
   opacity:0;
   filter: blur(12px);
-  will-change: opacity, filter;
 }
 
-html.att-intro-prep #lp-omiya-kaigo #Attention .attHero__next,
-html.att-intro #lp-omiya-kaigo #Attention .attHero__next{
+html.att-intro-prep #lp-omiya-kaigo #Attention .attHero__next{
   opacity:0;
   filter: blur(12px);
-  will-change: opacity, filter;
 }
 
-html.att-intro-prep #lp-omiya-kaigo #Attention .catchFace,
-html.att-intro #lp-omiya-kaigo #Attention .catchFace{
+html.att-intro-prep #lp-omiya-kaigo #Attention .catchFace{
   opacity:0;
   transform: translate3d(0, 26px, 0);
   filter: blur(10px);
-  will-change: opacity, transform, filter;
 }
 
-html.att-intro-prep #lp-omiya-kaigo #Attention .catchShadow,
-html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
+html.att-intro-prep #lp-omiya-kaigo #Attention .catchShadow{
   opacity:1;
   transform-origin: 50% 100%;
   transform: scale3d(1, 0, 1);
-  will-change: transform;
 }
 
-/* 実アニメーションは att-intro 時だけ動かす */
-html.att-intro #lp-omiya-kaigo #Attention .attHero::before{
-  animation: lpOmiyaAttSpot var(--att-intro-dur) var(--att-intro-ease) both;
+/* 共通のアニメ準備 */
+#lp-omiya-kaigo #Attention .attHero::before,
+#lp-omiya-kaigo #Attention .attHero__kicker,
+#lp-omiya-kaigo #Attention .attHero__chars,
+#lp-omiya-kaigo #Attention .attHero__next,
+#lp-omiya-kaigo #Attention .catchFace,
+#lp-omiya-kaigo #Attention .catchShadow{
+  will-change: opacity, transform, filter;
 }
 
+/* spot */
+html.att-intro #lp-omiya-kaigo #Attention .attHero.is-att-spot::before{
+  animation: lpOmiyaAttSpot 1200ms cubic-bezier(.16,1,.3,1) both;
+}
+
+/* kicker */
 html.att-intro #lp-omiya-kaigo #Attention .attHero__kicker{
-  animation: lpOmiyaAttFadeInFirst var(--att-intro-dur) var(--att-intro-ease) both;
+  transition:
+    opacity 520ms cubic-bezier(.16,1,.3,1),
+    filter 520ms cubic-bezier(.16,1,.3,1);
+}
+html.att-intro #lp-omiya-kaigo #Attention .attHero__kicker.is-att-on{
+  opacity:1;
+  filter: blur(0);
 }
 
+/* chars */
 html.att-intro #lp-omiya-kaigo #Attention .attHero__chars{
-  animation: lpOmiyaAttFadeInChars var(--att-intro-dur) var(--att-intro-ease) both;
+  transition:
+    opacity 620ms cubic-bezier(.16,1,.3,1),
+    filter 620ms cubic-bezier(.16,1,.3,1);
+}
+html.att-intro #lp-omiya-kaigo #Attention .attHero__chars.is-att-on{
+  opacity:1;
+  filter: blur(0);
 }
 
+/* next */
 html.att-intro #lp-omiya-kaigo #Attention .attHero__next{
-  animation: lpOmiyaAttFadeInAfterCatch var(--att-intro-dur) var(--att-intro-ease) both;
+  transition:
+    opacity 620ms cubic-bezier(.16,1,.3,1),
+    filter 620ms cubic-bezier(.16,1,.3,1);
+}
+html.att-intro #lp-omiya-kaigo #Attention .attHero__next.is-att-on{
+  opacity:1;
+  filter: blur(0);
 }
 
+/* catch face */
 html.att-intro #lp-omiya-kaigo #Attention .catchFace{
-  animation: lpOmiyaCatchFaceUp var(--shadow-nyoki-dur) cubic-bezier(.16,1,.3,1) calc(var(--shadow-nyoki-delay) + 220ms) forwards;
+  transition:
+    opacity 720ms cubic-bezier(.16,1,.3,1),
+    transform 720ms cubic-bezier(.16,1,.3,1),
+    filter 720ms cubic-bezier(.16,1,.3,1);
+}
+html.att-intro #lp-omiya-kaigo #Attention .catchFace.is-att-on{
+  opacity:1;
+  transform: translate3d(0, 0, 0);
+  filter: blur(0);
 }
 
+/* catch shadow */
 html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
-  animation: lpOmiyaShadowNyokiScale var(--shadow-nyoki-dur) cubic-bezier(.16,1,.3,1) calc(var(--shadow-nyoki-delay) + 220ms) forwards;
+  transition: transform 720ms cubic-bezier(.16,1,.3,1);
 }
-
-@keyframes lpOmiyaShadowNyokiScale{
-  0%{
-    transform: scale3d(1, 0, 1);
-  }
-  100%{
-    transform: scale3d(1, 1, 1);
-  }
-}
-
-@keyframes lpOmiyaCatchFaceUp{
-  0%{
-    opacity:0;
-    transform: translate3d(0, 26px, 0);
-    filter: blur(10px);
-  }
-  70%{
-    opacity:1;
-    transform: translate3d(0, 0, 0);
-    filter: blur(0);
-  }
-  100%{
-    opacity:1;
-    transform: translate3d(0, 0, 0);
-    filter: none;
-  }
+html.att-intro #lp-omiya-kaigo #Attention .catchShadow.is-att-on{
+  transform: scale3d(1, 1, 1);
 }
 
 @keyframes lpOmiyaAttSpot{
-  0%{ opacity:0; filter: blur(10px); }
-  14%{ opacity:1; filter: blur(0); }
-  74%{ opacity:1; }
-  100%{ opacity:0; }
-}
-
-/* kicker は 1番目 */
-@keyframes lpOmiyaAttFadeInFirst{
   0%{
     opacity:0;
-    filter: blur(14px);
+    filter: blur(10px);
   }
-  10%{
+  18%{
+    opacity:1;
+    filter: blur(0);
+  }
+  78%{
     opacity:1;
     filter: blur(0);
   }
   100%{
-    opacity:1;
-    filter:none;
-  }
-}
-
-/* chars は 2番目 */
-@keyframes lpOmiyaAttFadeInChars{
-  0%{
     opacity:0;
-    filter: blur(14px);
-  }
-  14%{
-    opacity:0;
-    filter: blur(14px);
-  }
-  32%{
-    opacity:1;
     filter: blur(0);
-  }
-  100%{
-    opacity:1;
-    filter:none;
-  }
-}
-
-/* NEXT は 3番目 */
-@keyframes lpOmiyaAttFadeInAfterCatch{
-  0%{
-    opacity:0;
-    filter: blur(14px);
-  }
-  42%{
-    opacity:0;
-    filter: blur(14px);
-  }
-  62%{
-    opacity:1;
-    filter: blur(0);
-  }
-  100%{
-    opacity:1;
-    filter:none;
   }
 }
 
@@ -1294,11 +1256,14 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
   html.att-intro #lp-omiya-kaigo #Attention .catchFace,
   html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
     animation:none !important;
-    filter:none !important;
+    transition:none !important;
     opacity:1 !important;
     transform:none !important;
+    filter:none !important;
   }
 }
+
+
 /* =========================================================
    Bad Image
 ========================================================= */
