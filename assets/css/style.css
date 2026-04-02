@@ -1610,7 +1610,11 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
 #lp-omiya-kaigo #Changing .chgFixed__headline{
   position: relative;
   display: inline-flex !important;
-  align-items: baseline !important;
+  align-items: center !important;
+  justify-content: center;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  gap: 4px;
   font-family: "Noto Sans JP", system-ui, -apple-system, sans-serif;
   font-weight: 800;
   font-size: 23px;
@@ -1618,11 +1622,15 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
   padding: 8px 10px 10px;
   color: #1f1f1f;
   margin: 0 !important;
-  flex-wrap: wrap;
-  justify-content:center;
+  max-width: 100%;
 }
 
-#lp-omiya-kaigo #Changing .chgFixed__black{ color: #1f1f1f; }
+#lp-omiya-kaigo #Changing .chgFixed__black{
+  color: #1f1f1f;
+  white-space: nowrap;
+  word-break: keep-all;
+}
+
 #lp-omiya-kaigo #Changing .chgFixed__ha{ letter-spacing: 0.06em; }
 
 #lp-omiya-kaigo #Changing .chgFixed__invert{
@@ -1638,6 +1646,8 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
   transform: none !important;
   vertical-align: baseline !important;
   border-radius: 0;
+  white-space: nowrap;
+  flex: 0 0 auto;
 }
 
 #lp-omiya-kaigo #Changing .chg{
@@ -1762,40 +1772,40 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
   position: absolute;
   top: 28px;
   left: 22px;
-  width: calc(100% - 22px);
-  min-width:0;
-  min-height: 31px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  width: calc(100% - 22px - var(--chg-top-right-gap, 44px) - 12px);
+  min-width: 0;
+  display: block;
   text-align: left;
-  padding-right: 12px;
+  padding-right: 0;
   font-family: "Noto Sans JP", system-ui, -apple-system, sans-serif;
   font-weight: 900;
   font-size: 20px;
   line-height: 1.25;
   color: #fff;
   z-index: 3;
+  white-space: normal;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
 }
 
 #lp-omiya-kaigo #Changing .chgCard__tags{
   position: absolute;
-  top: 55px;
+  top: 58px;
   left: 22px;
-  width: calc(100% - 22px);
-  min-width:0;
-  min-height: 31px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  width: calc(100% - 22px - var(--chg-top-right-gap, 44px) - 12px);
+  min-width: 0;
+  display: block;
   text-align: left;
-  padding-right: 12px;
+  padding-right: 0;
   font-family: "Noto Sans JP", system-ui, -apple-system, sans-serif;
   font-weight: 500;
   font-size: 12px;
-  line-height: 1.35;
+  line-height: 1.4;
   color: #fff;
   z-index: 3;
+  white-space: normal;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
 }
 
 #lp-omiya-kaigo #Changing .chgCard__photo{
@@ -1976,15 +1986,42 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
 }
 
 @media (max-width: 390px){
-  #lp-omiya-kaigo #Changing .chgFixed__kicker{ font-size: 22px; }
-  #lp-omiya-kaigo #Changing .chgFixed__headline{ font-size: 21px; }
-  #lp-omiya-kaigo #Changing .chgFixed__invert{ font-size: 32px; }
-  #lp-omiya-kaigo #Changing .chgCard__title{ font-size: 19px; }
-  #lp-omiya-kaigo #Changing .chgCard__body{ font-size: 20px; line-height: 1.7; }
-}
+  #lp-omiya-kaigo #Changing .chgFixed__kicker{
+    font-size: clamp(20px, 5.4vw, 22px);
+  }
 
-@media (min-width: 1024px){
-  #lp-omiya-kaigo #Changing .chgCard__swipe{ display: none !important; }
+  #lp-omiya-kaigo #Changing .chgFixed__headline{
+    font-size: clamp(18px, 5.1vw, 21px);
+    padding: 6px 8px 8px;
+    gap: 3px;
+  }
+
+  #lp-omiya-kaigo #Changing .chgFixed__invert{
+    font-size: clamp(27px, 8.2vw, 32px);
+    padding: 8px 10px;
+    margin-left: 2px;
+  }
+
+  #lp-omiya-kaigo #Changing .chgCard__title{
+    top: 24px;
+    left: 18px;
+    width: calc(100% - 18px - var(--chg-top-right-gap, 44px) - 10px);
+    font-size: 18px;
+    line-height: 1.22;
+  }
+
+  #lp-omiya-kaigo #Changing .chgCard__tags{
+    top: 52px;
+    left: 18px;
+    width: calc(100% - 18px - var(--chg-top-right-gap, 44px) - 10px);
+    font-size: 11px;
+    line-height: 1.38;
+  }
+
+  #lp-omiya-kaigo #Changing .chgCard__body{
+    font-size: 20px;
+    line-height: 1.7;
+  }
 }
 
 @media (max-width: 991px){
@@ -1996,10 +2033,8 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
 
   #lp-omiya-kaigo #Changing .chgCard__title,
   #lp-omiya-kaigo #Changing .chgCard__tags{
-    left: 0 !important;
-    width: 100% !important;
-    padding-left: 18px;
-    padding-right: 18px;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   #lp-omiya-kaigo #Changing .chgCard__top::before{ left: 0 !important; }
@@ -2009,7 +2044,6 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
   #lp-omiya-kaigo #Changing .chgFixed__invert,
   #lp-omiya-kaigo #Changing .chgCard__title,
   #lp-omiya-kaigo #Changing .chgCard__body{
-    white-space: normal;
     word-break: normal;
     overflow-wrap: anywhere;
   }
