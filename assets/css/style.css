@@ -1609,22 +1609,24 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
 
 #lp-omiya-kaigo #Changing .chgFixed__headline{
   position: relative;
-  display: flex !important;
+  display: inline-flex !important;
   align-items: center !important;
   justify-content: center;
   flex-wrap: nowrap !important;
   white-space: nowrap !important;
+  width: max-content;
+  max-width: none;
+  min-width: 0;
+  margin: 0 auto !important;
   gap: 4px;
+  padding: 8px 8px 10px;
   font-family: "Noto Sans JP", system-ui, -apple-system, sans-serif;
   font-weight: 800;
   font-size: 23px;
   line-height: 1;
-  padding: 8px 8px 10px;
   color: #1f1f1f;
-  margin: 0 !important;
-  width: 100%;
-  max-width: 100%;
-  min-width: 0;
+  transform-origin: center center;
+  transform: scale(1);
   overflow: visible;
 }
 
@@ -1632,7 +1634,7 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
   color: #1f1f1f;
   white-space: nowrap !important;
   word-break: keep-all;
-  flex: 0 1 auto;
+  flex: 0 0 auto;
   min-width: 0;
 }
 
@@ -2005,21 +2007,28 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
   box-shadow: 0 10px 20px rgba(89,182,233,.22), 0 0 0 1px rgba(0,0,0,.06) inset;
 }
 
+@media (max-width: 420px){
+  #lp-omiya-kaigo #Changing .chgFixed__headline{
+    transform: scale(.94);
+  }
+}
+
 @media (max-width: 390px){
   #lp-omiya-kaigo #Changing .chgFixed__kicker{
     font-size: clamp(20px, 5.4vw, 22px);
   }
 
   #lp-omiya-kaigo #Changing .chgFixed__headline{
-    gap: 2px;
+    gap: 3px;
     padding: 6px 4px 8px;
-    font-size: clamp(16px, 4.5vw, 19px);
+    font-size: 23px;
+    transform: scale(.88);
   }
 
   #lp-omiya-kaigo #Changing .chgFixed__invert{
     margin-left: 2px;
-    padding: 6px 8px;
-    font-size: clamp(20px, 6.8vw, 28px);
+    padding: 8px 10px;
+    font-size: 30px;
   }
 
   #lp-omiya-kaigo #Changing .chgCard__title{
@@ -2046,24 +2055,23 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
 
 @media (max-width: 360px){
   #lp-omiya-kaigo #Changing .chgFixed__headline{
-    font-size: 15px;
-    letter-spacing: -.01em;
+    transform: scale(.82);
   }
 
   #lp-omiya-kaigo #Changing .chgFixed__invert{
-    font-size: 19px;
-    padding: 5px 7px;
+    font-size: 26px;
+    padding: 7px 8px;
   }
 }
 
 @media (max-width: 340px){
   #lp-omiya-kaigo #Changing .chgFixed__headline{
-    font-size: 14px;
+    transform: scale(.76);
   }
 
   #lp-omiya-kaigo #Changing .chgFixed__invert{
-    font-size: 17px;
-    padding: 5px 6px;
+    font-size: 23px;
+    padding: 6px 7px;
   }
 }
 
