@@ -570,10 +570,10 @@
 
       function shouldRun(){
         if(prefersReducedMotion()) return false;
+
         var att = rq("#Attention");
         if(!att) return false;
-        if(location.hash && location.hash !== "" && location.hash !== "#Top" && location.hash !== "#Attention") return false;
-        if((window.scrollY || 0) > 12) return false;
+
         return true;
       }
 
