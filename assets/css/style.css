@@ -1362,15 +1362,15 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
   color:#fff;
   font-weight:900;
   letter-spacing:.02em;
-  line-height:1.25;
-  font-size: clamp(16px, 2.6vw, 18px);
+  line-height:1.85;
+  font-size: clamp(18px, 3vw, 21px);
   text-shadow: 0 10px 18px rgba(0,0,0,.16);
 }
 
 #lp-omiya-kaigo #BadImage .badHero__leadEm{
   display:inline-block;
   margin:0 4px;
-  padding: 4px 10px 5px;
+  padding: 1px 10px 1px;
   border-radius: 10px;
   background: rgba(255,255,255,.95);
   color: rgba(0,0,0,.88);
@@ -1494,7 +1494,7 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
   }
 
   #lp-omiya-kaigo #BadImage .badHero__stage{
-    min-height: clamp(430px, 72svh, 560px);
+    min-height: clamp(470px, 78svh, 620px);
   }
 }
 
