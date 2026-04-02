@@ -920,7 +920,7 @@
           io.disconnect();
           break;
         }
-      }, { threshold: 0.92 });
+      }, { threshold: 0.75 });
 
       io.observe(rootEl);
     })();
