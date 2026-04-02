@@ -2700,13 +2700,17 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
     --voice-bubble-pad-top: clamp(17px, 5.0vw, 33px);
     --voice-bubble-pad-x: clamp(24px, 7.6vw, 36px);
     --voice-bubble-pad-bottom: 18px;
-    --voice-text-size: clamp(11.5px, 3.3vw, 13px);
-    --voice-meta-size: clamp(11.5px, 3.3vw, 13px);
+    --voice-text-size: clamp(9.5px, 2.8vw, 10.75px);
+    --voice-meta-size: clamp(10.25px, 2.75vw, 10.75px);
     --voice-text-max: 19em;
   }
 
   #lp-omiya-kaigo #Voice .voiceBubbleWrap{
     width:min(392px, 100%);
+  }
+
+  #lp-omiya-kaigo #Voice .voiceBubble__meta{
+    transform: translateY(-55px);
   }
 }
 
