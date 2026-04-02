@@ -1112,8 +1112,9 @@ html.att-intro #lp-omiya-kaigo #Attention .attHero__nextIcon.is-pulse{
    Attention Intro Animation
 ========================================================= */
 
-/* 初期状態（最初の描画で見せない） */
-html.att-intro-prep #lp-omiya-kaigo #Attention .attHero::before{
+/* 初期状態（prep中も intro中も開始状態を維持する） */
+html.att-intro-prep #lp-omiya-kaigo #Attention .attHero::before,
+html.att-intro #lp-omiya-kaigo #Attention .attHero::before{
   content:"";
   position:absolute;
   inset:-20%;
@@ -1127,28 +1128,33 @@ html.att-intro-prep #lp-omiya-kaigo #Attention .attHero::before{
   opacity:0;
 }
 
-html.att-intro-prep #lp-omiya-kaigo #Attention .attHero__kicker{
+html.att-intro-prep #lp-omiya-kaigo #Attention .attHero__kicker,
+html.att-intro #lp-omiya-kaigo #Attention .attHero__kicker{
   opacity:0;
   filter: blur(10px);
 }
 
-html.att-intro-prep #lp-omiya-kaigo #Attention .attHero__chars{
+html.att-intro-prep #lp-omiya-kaigo #Attention .attHero__chars,
+html.att-intro #lp-omiya-kaigo #Attention .attHero__chars{
   opacity:0;
   filter: blur(12px);
 }
 
-html.att-intro-prep #lp-omiya-kaigo #Attention .attHero__next{
+html.att-intro-prep #lp-omiya-kaigo #Attention .attHero__next,
+html.att-intro #lp-omiya-kaigo #Attention .attHero__next{
   opacity:0;
   filter: blur(12px);
 }
 
-html.att-intro-prep #lp-omiya-kaigo #Attention .catchFace{
+html.att-intro-prep #lp-omiya-kaigo #Attention .catchFace,
+html.att-intro #lp-omiya-kaigo #Attention .catchFace{
   opacity:0;
   transform: translate3d(0, 26px, 0);
   filter: blur(10px);
 }
 
-html.att-intro-prep #lp-omiya-kaigo #Attention .catchShadow{
+html.att-intro-prep #lp-omiya-kaigo #Attention .catchShadow,
+html.att-intro #lp-omiya-kaigo #Attention .catchShadow{
   opacity:1;
   transform-origin: 50% 100%;
   transform: scale3d(1, 0, 1);
@@ -1165,6 +1171,9 @@ html.att-intro-prep #lp-omiya-kaigo #Attention .catchShadow{
 }
 
 /* spot */
+html.att-intro #lp-omiya-kaigo #Attention .attHero::before{
+  transition: opacity 0s linear, filter 0s linear;
+}
 html.att-intro #lp-omiya-kaigo #Attention .attHero.is-att-spot::before{
   animation: lpOmiyaAttSpot 1200ms cubic-bezier(.16,1,.3,1) both;
 }
