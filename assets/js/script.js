@@ -569,59 +569,60 @@
   var PREP_CLS = "att-intro-prep";
   var CLS = "att-intro";
   var started = false;
+  var timers = [];
 
   function shouldRun(){
     if(prefersReducedMotion()) return false;
-
     var att = rq("#Attention");
     if(!att) return false;
-
     return true;
   }
 
-  function getDurationMs(){
-    var r = getRoot();
-    var dur = r ? getComputedStyle(r).getPropertyValue("--att-intro-dur") : "4200ms";
-    var ms = 4200;
-
-    if(typeof dur === "string"){
-      dur = dur.trim();
-      if(dur.indexOf("ms") > -1) ms = parseFloat(dur);
-      else if(dur.indexOf("s") > -1) ms = parseFloat(dur) * 1000;
+  function clearTimers(){
+    while(timers.length){
+      clearTimeout(timers.pop());
     }
-    return ms;
+  }
+
+  function later(fn, ms){
+    var id = setTimeout(fn, ms);
+    timers.push(id);
+    return id;
   }
 
   function cleanupPrep(){
     ROOT_HTML.classList.remove(PREP_CLS);
   }
 
-  function forceReflow(){
-    void document.body.offsetHeight;
+  function resetAttentionStates(){
+    var att = rq("#Attention");
+    if(!att) return null;
+
+    var hero   = q(".attHero", att);
+    var kicker = q(".attHero__kicker", att);
+    var chars  = q(".attHero__chars", att);
+    var next   = q(".attHero__next", att);
+    var face   = q(".catchFace", att);
+    var shadow = q(".catchShadow", att);
+
+    [hero, kicker, chars, next, face, shadow].forEach(function(el){
+      if(!el) return;
+      el.classList.remove("is-att-spot", "is-att-on");
+    });
+
+    return {
+      hero: hero,
+      kicker: kicker,
+      chars: chars,
+      next: next,
+      face: face,
+      shadow: shadow
+    };
   }
 
-  function restartAttentionAnimations(){
-    var att = rq("#Attention");
-    if(!att) return;
-
-    var targets = [
-      q(".attHero", att),
-      q(".attHero__kicker", att),
-      q(".attHero__chars", att),
-      q(".attHero__next", att),
-      q(".catchFace", att),
-      q(".catchShadow", att)
-    ].filter(Boolean);
-
-    targets.forEach(function(el){
-      el.style.animation = "none";
-    });
-
-    forceReflow();
-
-    targets.forEach(function(el){
-      el.style.animation = "";
-    });
+  function forceReflow(el){
+    if(!el) return;
+    void el.offsetHeight;
   }
 
   function run(){
@@ -633,19 +634,39 @@
     }
 
     started = true;
+    clearTimers();
+
+    var parts = resetAttentionStates();
+    if(!parts){
+      cleanupPrep();
+      return;
+    }
 
     requestAnimationFrame(function(){
-      ROOT_HTML.classList.remove(CLS);
-      ROOT_HTML.classList.remove(PREP_CLS);
-
-      forceReflow();
-
+      cleanupPrep();
       ROOT_HTML.classList.add(CLS);
-      restartAttentionAnimations();
 
-      window.setTimeout(function(){
+      forceReflow(parts.hero);
+
+      if(parts.hero)   parts.hero.classList.add("is-att-spot");
+
+      later(function(){
+        if(parts.kicker) parts.kicker.classList.add("is-att-on");
+      }, 70);
+
+      later(function(){
+        if(parts.shadow) parts.shadow.classList.add("is-att-on");
+        if(parts.face)   parts.face.classList.add("is-att-on");
+        if(parts.chars)  parts.chars.classList.add("is-att-on");
+      }, 620);
+
+      later(function(){
+        if(parts.next) parts.next.classList.add("is-att-on");
+      }, 1450);
+
+      later(function(){
         ROOT_HTML.classList.remove(CLS);
-      }, getDurationMs() + 120);
+      }, 2600);
     });
   }
 
@@ -661,18 +682,19 @@
 })();
 
 
-    (function(){
-      if (window.__ATTENTION_NEXTICON_PULSE_INITED__) return;
-      window.__ATTENTION_NEXTICON_PULSE_INITED__ = true;
+(function(){
+  if (window.__ATTENTION_NEXTICON_PULSE_INITED__) return;
+  window.__ATTENTION_NEXTICON_PULSE_INITED__ = true;
 
-      if (prefersReducedMotion()) return;
+  if (prefersReducedMotion()) return;
 
-      var icon = rq("#Attention .attHero__nextIcon");
-      if(!icon) return;
+  var icon = rq("#Attention .attHero__nextIcon");
+  if(!icon) return;
 
-      var delay = document.documentElement.classList.contains("att-intro") ? 1700 : 0;
-      setTimeout(function(){ icon.classList.add("is-pulse"); }, delay);
-    })();
+  setTimeout(function(){
+    icon.classList.add("is-pulse");
+  }, 1550);
+})();
 
 
     (function(){
