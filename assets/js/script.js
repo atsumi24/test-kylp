@@ -566,6 +566,7 @@
 
 (function(){
   var ROOT_HTML = document.documentElement;
+  var PREP_CLS = "att-intro-prep";
   var CLS = "att-intro";
   var started = false;
 
@@ -591,14 +592,23 @@
     return ms;
   }
 
+  function cleanupPrep(){
+    ROOT_HTML.classList.remove(PREP_CLS);
+  }
+
   function run(){
     if(started) return;
-    if(!shouldRun()) return;
+
+    if(!shouldRun()){
+      cleanupPrep();
+      return;
+    }
 
     started = true;
 
     requestAnimationFrame(function(){
       requestAnimationFrame(function(){
+        ROOT_HTML.classList.remove(PREP_CLS);
         ROOT_HTML.classList.add(CLS);
 
         window.setTimeout(function(){
