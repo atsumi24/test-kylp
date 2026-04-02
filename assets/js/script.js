@@ -564,37 +564,60 @@
     })();
 
 
-    (function(){
-      var ROOT_HTML = document.documentElement;
-      var CLS  = "att-intro";
+(function(){
+  var ROOT_HTML = document.documentElement;
+  var CLS = "att-intro";
+  var started = false;
 
-      function shouldRun(){
-        if(prefersReducedMotion()) return false;
+  function shouldRun(){
+    if(prefersReducedMotion()) return false;
 
-        var att = rq("#Attention");
-        if(!att) return false;
+    var att = rq("#Attention");
+    if(!att) return false;
 
-        return true;
-      }
+    return true;
+  }
 
-      function run(){
-        if(!shouldRun()) return;
+  function getDurationMs(){
+    var r = getRoot();
+    var dur = r ? getComputedStyle(r).getPropertyValue("--att-intro-dur") : "4200ms";
+    var ms = 4200;
 
+    if(typeof dur === "string"){
+      dur = dur.trim();
+      if(dur.indexOf("ms") > -1) ms = parseFloat(dur);
+      else if(dur.indexOf("s") > -1) ms = parseFloat(dur) * 1000;
+    }
+    return ms;
+  }
+
+  function run(){
+    if(started) return;
+    if(!shouldRun()) return;
+
+    started = true;
+
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
         ROOT_HTML.classList.add(CLS);
-
-        var r = getRoot();
-        var dur = r ? getComputedStyle(r).getPropertyValue("--att-intro-dur") : "4200ms";
-        var ms = 4200;
-        if(dur.indexOf("ms") > -1) ms = parseFloat(dur);
-        else if(dur.indexOf("s") > -1) ms = parseFloat(dur) * 1000;
 
         window.setTimeout(function(){
           ROOT_HTML.classList.remove(CLS);
-        }, ms + 120);
-      }
+        }, getDurationMs() + 120);
+      });
+    });
+  }
 
+  function waitAndRun(){
+    if(document.readyState === "complete"){
       run();
-    })();
+    }else{
+      window.addEventListener("load", run, { once:true });
+    }
+  }
+
+  waitAndRun();
+})();
 
 
     (function(){
