@@ -2065,6 +2065,25 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow.is-att-on{
   }
 }
 
+/* Pixel 8近辺の幅帯だけ title / tags の重なりを回避 */
+@media (min-width: 391px) and (max-width: 430px){
+  #lp-omiya-kaigo #Changing .chgCard__title{
+    top: 24px;
+    left: 20px;
+    width: calc(100% - 20px - var(--chg-top-right-gap, 44px) - 12px);
+    font-size: 18px;
+    line-height: 1.22;
+  }
+
+  #lp-omiya-kaigo #Changing .chgCard__tags{
+    top: 72px;
+    left: 20px;
+    width: calc(100% - 20px - var(--chg-top-right-gap, 44px) - 12px);
+    font-size: 11px;
+    line-height: 1.38;
+  }
+}
+
 @media (max-width: 390px){
   #lp-omiya-kaigo #Changing .chgFixed__kicker{
     font-size: clamp(20px, 5.4vw, 22px);
@@ -2159,6 +2178,7 @@ html.att-intro #lp-omiya-kaigo #Attention .catchShadow.is-att-on{
     opacity: 1 !important;
   }
 }
+
 /* =========================================================
    SubAction
 ========================================================= */
